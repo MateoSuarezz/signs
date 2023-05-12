@@ -7,6 +7,8 @@ require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
 
 require_relative 'models/user'
+require_relative 'models/card'
+
 
 class App < Sinatra::Application
   def initialize(app = nil)
@@ -43,5 +45,12 @@ class App < Sinatra::Application
   get '/' do
     erb :index
   end
+  
+  get '/bd' do 
+  	card = Card.new 
+  	card = Card.create(card_id: "1", description: "una carta", content_link: " ")
+  	card.save 
+  	puts card
+  end 
 end
 

@@ -9,6 +9,12 @@ require 'sinatra/reloader' if Sinatra::Base.environment == :development
 require_relative 'models/user'
 require_relative 'models/card'
 
+# Configuración de ActiveRecord
+ActiveRecord::Base.establish_connection(
+  adapter: 'sqlite3',
+  database: 'db/duo_development.sqlite3'
+)
+
 
 class App < Sinatra::Application
   def initialize(app = nil)
@@ -47,10 +53,8 @@ class App < Sinatra::Application
   end
   
   get '/bd' do 
-  	card = Card.new 
-  	card = Card.create(card_id: "1", description: "una carta", content_link: " ")
-  	card.save 
-  	puts card
+  	@cards = Card.all
+  	erb :data
   end 
 end
 

@@ -1,0 +1,10 @@
+<html>
+  <body>
+    <h1>Contenido de la base de datos</h1>
+    <ul>
+      <% @cards.each do |card| %>
+        <li><%= card.id %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

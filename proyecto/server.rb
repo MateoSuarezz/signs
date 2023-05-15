@@ -65,17 +65,12 @@ class App < Sinatra::Application
       end
     end
     
-
-    get '/user' do
-      "Hello World"
-    end
-    
     post '/login' do
       @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password])
         redirect '/game'
       else
-        "Error login user: Invalid email or password"
+        redirect '/login'
       end
     end
     

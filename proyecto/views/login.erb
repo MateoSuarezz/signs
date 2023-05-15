@@ -39,19 +39,40 @@
 	</style>
 
 	<style>
+
+    h1 {
+			font-size: 200px;
+			color: black;
+			font-family: "Inter", sans-serif;
+			text-align: center;
+			margin: 20px;
+			padding: 20px;
+			line-height: 121px;
+	}
+
     .login-form {
         text-align: center;
-        margin-top: 200px;
+        margin-top: 275px;
         position: absolute;
     }
 
     .login-form input[type="text"],
     .login-form input[type="password"] {
         padding: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         width: 200px;
+        font-family:"Inter", sans-serif;    
     }
-    
+
+    .login-form input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #F6EA79;
+        color: black;
+        border: none;
+        cursor: pointer;
+        font-family:"Inter", sans-serif;
+
+    }
 	</style>
 
 
@@ -60,8 +81,9 @@
 	
 
 	<p>
-		<font size="100" color=#0000 face="Inter, sans-serif"> <h1> S I G N S </h1> </font>
+        <h1>S I G N S</h1>
 	</p> 
+
 
 	<div class="white-stripe"></div>
 
@@ -69,7 +91,7 @@
         <form action="/login" method="POST">
         <input type="text" name="email" placeholder="Email" required><br>
         <input type="password" name="password" placeholder="Contraseña" required><br>
-        <button type="submit">Ingresar</button>
+        <input type="submit" value="Ingresar">
     </form>
 
     </div>

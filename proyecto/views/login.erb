@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signs</title>
+	<style>
+    body {
+        background-color: #A3DEFF;
+        margin: 0;
+        padding: 0;
+    }
+    .white-stripe {
+        width: 1800px;
+        height: 344px;
+        background-color: white;
+        margin: 1 auto;
+		position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+	</style>
+
+	<style>
+    body {
+        background-color: #A3DEFF;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 250vh;
+    }
+
+    .centered-element {
+        width: 200px;
+        height: 200px;
+        background-color: white;
+        margin-top: 50px;
+    }
+	</style>
+
+	<style>
+    .login-form {
+        text-align: center;
+        margin-top: 200px;
+        position: absolute;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 200px;
+    }
+    
+	</style>
+
+
+</head>
+<body>
+	
+
+	<p>
+		<font size="100" color=#0000 face="Inter, sans-serif"> <h1> S I G N S </h1> </font>
+	</p> 
+
+	<div class="white-stripe"></div>
+
+    <div class="login-form">
+        <form action="/login" method="POST">
+        <input type="text" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Contraseña" required><br>
+        <button type="submit">Ingresar</button>
+    </form>
+
+    </div>
+
+</body>
+</html>

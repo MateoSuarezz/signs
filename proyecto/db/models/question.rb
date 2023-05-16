@@ -1,2 +1,3 @@
-class Question < ApplicationRecord
+class Question < ApplicationRecord::Base
+    
 end

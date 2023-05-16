@@ -57,6 +57,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  activerecord
   multi_json
   rake
   sinatra!

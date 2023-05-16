@@ -80,10 +80,13 @@ class App < Sinatra::Application
     end 
 
     get '/game' do
-      logger.info 'USANDO LOGGER INFO EN GAME PATH'
-      'Game'
+      erb :game
     end
 
+    get '/game/module1/exam' do
+      erb :exam
+    end
+    
     get '/' do
       erb :index
     end
@@ -92,4 +95,10 @@ class App < Sinatra::Application
       @cards = Card.all
       erb :data
     end 
+
+    
+
+
+
+
 end

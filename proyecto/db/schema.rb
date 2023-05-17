@@ -10,16 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_15_165009) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_17_183117) do
   create_table "cards", force: :cascade do |t|
     t.integer "card_id"
     t.string "description"
     t.string "content_link"
   end
 
-  create_table "question", force: :cascade do |t|
-    t.integer "question"
+  create_table "person", force: :cascade do |t|
+    t.string "name"
+    t.string "mail"
+    t.string "password"
+  end
+
+  create_table "questions", force: :cascade do |t|
     t.boolean "answer"
+    t.string "question"
   end
 
   create_table "users", force: :cascade do |t|

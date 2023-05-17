@@ -96,7 +96,10 @@ class App < Sinatra::Application
       erb :data
     end 
 
-    
+    get '/questions' do 
+      @questions = Question.all
+      erb :question
+    end
 
 
 

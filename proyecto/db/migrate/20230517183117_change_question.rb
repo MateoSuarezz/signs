@@ -1,4 +1,4 @@
-class ChangeQuestion < ActiveRecord::Migration[7.0]
+class Changequestions < ActiveRecord::Migration[7.0]
   def change
   
     rename_table :question, :questions 

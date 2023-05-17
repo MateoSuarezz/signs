@@ -3,22 +3,14 @@
 <head>
     <title>Signs</title>
 
-    <style>
-    body {
-			background-color: white;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-		}
-	</style>
 </head>
-    <body>
-        <h1>Pregunta</h1>
-	<h2><%= @question.content %></h2>
-		<form action="/questions/<%= @question.id %>" method="post">
- 			<button type="submit" name="answer" value="true">Verdadero</button>
-  			<button type="submit" name="answer" value="false">Falso</button>
-		</form>
-    </body>
+	<body>
+  	<h1>Pregunta</h1>
+  	<h2><%= @pregunta.question%></h2>
+  	<img src="graphics/a.png" alt="imagen">
+  	<form action="/questions/<%= @pregunta.id %>" method="post">
+  		<button type="submit" name="answer" value="true">Verdadero</button>
+  		<button type="submit" name="answer" value="false">Falso</button>
+  	</form>
+	</body>
 </html>

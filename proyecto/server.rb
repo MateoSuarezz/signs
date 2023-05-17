@@ -5,6 +5,9 @@ require 'sinatra/activerecord'
 require 'active_record'
 require 'yaml'
 require_relative 'db/models/user'
+require_relative 'db/models/card'
+require_relative 'db/models/question'
+
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
 # App, currently: Is connected to the database.
@@ -84,6 +87,7 @@ class App < Sinatra::Application
     end
 
     get '/game/module1/exam' do
+      @pregunta = Question.first
       erb :exam
     end
     
@@ -91,17 +95,16 @@ class App < Sinatra::Application
       erb :index
     end
     
-    get '/bd' do 
-      @cards = Card.all
-      erb :data
+    get '/mostrar_primera_pregunta' do
+      @pregunta = Question.find_by(id: 1) 
+      @pregunta.question = "Esta es la letra T?" 
+      @pregunta.save
+      erb :exam
     end 
-
+    
     get '/questions' do 
       @questions = Question.all
       erb :question
     end
-
-
-
-
+    
 end

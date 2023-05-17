@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_17_183117) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_17_195640) do
   create_table "cards", force: :cascade do |t|
     t.integer "card_id"
     t.string "description"
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_183117) do
   create_table "questions", force: :cascade do |t|
     t.boolean "answer"
     t.string "question"
+    t.string "content_link"
   end
 
   create_table "users", force: :cascade do |t|

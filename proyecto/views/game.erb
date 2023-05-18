@@ -5,57 +5,59 @@
 
     <style>
     body {
-			background-color: white;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-		}
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+		font-family:"Inter", sans-serif;
+		
+    }
 
-		.container {
-			display: flex;
-			justify-content: center;
-			gap: 20px;
-		}
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
 
     .blue-stripe {
         width: 1800px;
         height: 180px;
         background-color: #A3DEFF;
         margin: 1 auto;
-		position: fixed;
+        position: fixed;
         top: 0%;
-
     }
-		.box {
-			width: 200px;
-			height: 200px;
-			background-color: #6AD267;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			cursor: pointer;
-		}
 
-		.box a {
-			color: white;
-			font-size: 24px;
-			text-decoration: none;
-		}
-	</style>
+    .big-box {
+        width: 200px;
+        height: 200px;
+        background-color: #F6EA79;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        cursor: pointer;
+    }
+
+    h2 {
+        color: black;
+        font-size: 50px;
+        text-align: center;
+    }
+    </style>
 </head>
-    <body>
-        <div class="blue-stripe"></div>
-        <div class="container">
-		<div class="box">
-			<a href="/game/module1/exam/1">ABECEDARIO</a>
-		</div>
-		<div class="box">
-			<a href="pagina2.html">Null</a>
-		</div>
-		<div class="box">
-			<a href="pagina3.html">Null</a>
-		</div>
-	</div>
-    </body>
+<body>
+
+    <div class="blue-stripe"></div>
+    <div class="container">
+	<h2>A B C</h2>
+        <div class="big-box">
+            <button onclick="location.href='/game/module1/exam/1'">Examen</button>
+            <button onclick="location.href='/game/module1/learn'">Aprender</button>
+        </div>
+    </div>
+</body>
 </html>

@@ -3,32 +3,49 @@
 <head>
     <title>Signs</title>
     <style>
-	img {
-  		width: 10%;
-  		heigth: 10%;
-	}
-</style>
+        body {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family:"Inter", sans-serif; 
+        }
 
+        img {
+            width: 10%;
+  		      heigth: 10%;
+            margin: 20px;
+        }
+
+        button {
+            color: black;
+            background-color: #6AD267;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
 
 <body>
-  <% if @current_index >= @preguntas.length %>
+<% if @current_index >= @preguntas.length %>
     <h1>Final Score: <%= @final_score %></h1>
-  <% else %>
-    <h1>Pregunta
-    <%= @preguntas.pluck(:question) %>
-    
-    </h1>
-    <%= @pregunta.id %>
-    <h2><%= @pregunta.question %></h2>
-    <img src="<%= @pregunta.content_link %>" alt="imagen">
-    <form action="/game/module1/exam/<%= @pregunta.id %>" method="post">
-      <input type="hidden" value="<%= @user.id %>" name="user_id" >
-      <button type="submit" name="answer" value="true">Sí</button>
-      <button type="submit" name="answer" value="false">No</button>
-    </form>
-
-    <h2>Puntaje: <%= @user.points %></h2>
-  <% end %>
+<% else %>
+    <div>
+        <h1>Pregunta</h1>
+        <h2><%= @pregunta.question %></h2>
+        <img src="<%= @pregunta.content_link %>" alt="imagen">
+        <form action="/game/module1/exam/<%= @pregunta.id %>" method="post">
+            <input type="hidden" value="<%= @user.id %>" name="user_id">
+            <button type="submit" name="answer" value="true">Sí</button>
+            <button type="submit" name="answer" value="false">No</button>
+        </form>
+        <h2>Puntaje: <%= @user.points %></h2>
+    </div>
+<% end %>
 </body>
 </html>
-

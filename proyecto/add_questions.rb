@@ -28,5 +28,9 @@ def add_questions
   puts 'Questions added successfully!'
 end
 
+def get_all_questions
+  Question.all
+end
+
 # Call the method to add questions
 add_questions

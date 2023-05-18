@@ -90,18 +90,37 @@ class App < Sinatra::Application
       erb :index
     end
     
-    get '/game/module1/exam' do
-    	load 'add_questions.rb'
-    	#@user = User.find_by(email: params[:email])
-    	#@user
-    	#@examen = @user.assessments.create(correct_answers: 0)
-   		@pregunta = Question.find_by(id:1)
-   		erb :exam
+    get '/game/module1/exam/:id' do
+      session[:points] ||= 0
+      @preguntas = get_all_questions
+      @current_index = session[:current_index] || 0
+    
+      if @current_index >= @preguntas.length
+        @final_score = session[:points]
+        session[:points] = 0
+        session[:current_index] = 0
+        'holi soy el final'
+      else
+        @pregunta = @preguntas[@current_index]
+        erb :exam
+      end
     end
     
-    post '/questions/1' do
-    	"Hello World"
- 	end
+    # Ruta para procesar las respuestas
+    post '/game/module1/exam/:id' do
+      session[:points] ||= 0
+      question_id = params[:id]
+      user_answer = params[:answer]
+      question = Question.find_by(id: question_id)
+    
+      if question && question.answer.to_s == user_answer
+        session[:points] += 10
+      end
+    
+      next_id = question_id.to_i + 1
+      session[:current_index] = next_id
+      redirect "/game/module1/exam/#{next_id}"
+    end
     
     get '/ver_preguntas' do 
     	load 'add_questions.rb'

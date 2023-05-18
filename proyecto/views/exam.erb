@@ -9,15 +9,14 @@
 	}
 </style>
 
-</head>
-	<body>
-  	<h1>Pregunta</h1>
-  	<h2><%=@pregunta.question%></h2>
-  	<img src="<%=@pregunta.content_link%>" alt="imagen">
-  	<form action="/questions/<%= @pregunta.id %>" method="post">
-  		<button type="submit" name="answer" value="true">Sí</button>
-  		<button type="submit" name="answer" value="false">No</button>
-  	</form>
-  	<h2>Puntaje:</h2>
-	</body>
+<body>
+  <h1>Pregunta</h1>
+  <h2><%=@pregunta.question%></h2>
+  <img src="<%=@pregunta.content_link%>" alt="imagen">
+  <form action="/game/module1/exam/<%= @pregunta.id %>" method="post">
+    <button type="submit" name="answer" value="true">Sí</button>
+    <button type="submit" name="answer" value="false">No</button>
+  </form>
+  <h2>Puntaje: <%= session[:points] %></h2>
+</body>
 </html>

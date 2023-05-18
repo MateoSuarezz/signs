@@ -4,9 +4,9 @@ require 'logger'
 require 'sinatra/activerecord'
 require 'active_record'
 require 'yaml'
-require_relative 'db/models/user'
-require_relative 'db/models/card'
-require_relative 'db/models/question'
+require_relative './models/user'
+require_relative './models/card'
+require_relative './models/question'
 require_relative 'add_questions'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
@@ -89,34 +89,37 @@ class App < Sinatra::Application
     get '/' do
       erb :index
     end
-    
+
     get '/game/module1/exam/:id' do
-      session[:points] ||= 0
-      @preguntas = get_all_questions
+      @user = User.first
+      @preguntas = Question.all
       @current_index = session[:current_index] || 0
     
       if @current_index >= @preguntas.length
-        @final_score = session[:points]
-        session[:points] = 0
-        session[:current_index] = 0
-        'holi soy el final'
+        @final_score = @user.points
       else
-        @pregunta = @preguntas[@current_index]
+        @pregunta = @preguntas[params[:id].to_i - 1]
         erb :exam
       end
     end
     
+    def to_boolean(str)
+      str == 'true'
+    end
+
     # Ruta para procesar las respuestas
     post '/game/module1/exam/:id' do
-      session[:points] ||= 0
       question_id = params[:id]
       user_answer = params[:answer]
+      logger.info "Testing: #{params[:answer]}"
+      
       question = Question.find_by(id: question_id)
-    
-      if question && question.answer.to_s == user_answer
-        session[:points] += 10
+      logger.info "Testing: #{question && question.answer == to_boolean(user_answer)}"
+      if question && question.answer == to_boolean(user_answer)
+        @user = User.find_by(id:params[:user_id])
+        @user.points =( @user.points || 0 ) + 10
+        @user.save
       end
-    
       next_id = question_id.to_i + 1
       session[:current_index] = next_id
       redirect "/game/module1/exam/#{next_id}"

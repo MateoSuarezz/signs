@@ -2,7 +2,7 @@
 
 # Require necessary dependencies and establish a database connection
 require 'active_record'
-require_relative 'db/models/question' # Assuming your Question model is defined in this file
+require_relative './models/question' # Assuming your Question model is defined in this file
 
 # Configure the database connection
 ActiveRecord::Base.establish_connection(
@@ -28,9 +28,6 @@ def add_questions
   puts 'Questions added successfully!'
 end
 
-def get_all_questions
-  Question.all
-end
 
 
 # Call the method to add questions

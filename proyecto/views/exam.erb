@@ -9,14 +9,26 @@
 	}
 </style>
 
+
 <body>
-  <h1>Pregunta</h1>
-  <h2><%=@pregunta.question%></h2>
-  <img src="<%=@pregunta.content_link%>" alt="imagen">
-  <form action="/game/module1/exam/<%= @pregunta.id %>" method="post">
-    <button type="submit" name="answer" value="true">Sí</button>
-    <button type="submit" name="answer" value="false">No</button>
-  </form>
-  <h2>Puntaje: <%= session[:points] %></h2>
+  <% if @current_index >= @preguntas.length %>
+    <h1>Final Score: <%= @final_score %></h1>
+  <% else %>
+    <h1>Pregunta
+    <%= @preguntas.pluck(:question) %>
+    
+    </h1>
+    <%= @pregunta.id %>
+    <h2><%= @pregunta.question %></h2>
+    <img src="<%= @pregunta.content_link %>" alt="imagen">
+    <form action="/game/module1/exam/<%= @pregunta.id %>" method="post">
+      <input type="hidden" value="<%= @user.id %>" name="user_id" >
+      <button type="submit" name="answer" value="true">Sí</button>
+      <button type="submit" name="answer" value="false">No</button>
+    </form>
+
+    <h2>Puntaje: <%= @user.points %></h2>
+  <% end %>
 </body>
 </html>
+

@@ -7,7 +7,7 @@ require 'yaml'
 require_relative 'db/models/user'
 require_relative 'db/models/card'
 require_relative 'db/models/question'
-require_relative 'db/models/assessment'
+require_relative 'add_questions'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
 # App, currently: Is connected to the database.

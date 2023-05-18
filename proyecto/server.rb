@@ -7,7 +7,7 @@ require 'yaml'
 require_relative 'db/models/user'
 require_relative 'db/models/card'
 require_relative 'db/models/question'
-
+require_relative 'db/models/assessment'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
 # App, currently: Is connected to the database.
@@ -85,26 +85,26 @@ class App < Sinatra::Application
     get '/game' do
       erb :game
     end
-
-    get '/game/module1/exam' do
-      @pregunta = Question.first
-      erb :exam
-    end
     
     get '/' do
       erb :index
     end
     
-    get '/mostrar_primera_pregunta' do
-      @pregunta = Question.find_by(id: 1) 
-      @pregunta.question = "Esta es la letra T?" 
-      @pregunta.save
-      erb :exam
-    end 
-    
-    get '/questions' do 
-      @questions = Question.all
-      erb :question
+    get '/game/module1/exam' do
+    	load 'add_questions.rb'
+    	#@user = User.find_by(email: params[:email])
+    	#@user
+    	#@examen = @user.assessments.create(correct_answers: 0)
+   		@pregunta = Question.find_by(id:1)
+   		erb :exam
     end
     
+    post '/questions/1' do
+    	"Hello World"
+ 	end
+    
+    get '/ver_preguntas' do 
+    	load 'add_questions.rb'
+    	Question.all.to_json
+    end 
 end

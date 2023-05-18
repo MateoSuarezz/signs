@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_17_195640) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_18_001307) do
+  create_table "assessments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "correct_answers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_assessments_on_user_id"
+  end
+
   create_table "cards", force: :cascade do |t|
     t.integer "card_id"
     t.string "description"

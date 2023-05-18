@@ -1,3 +1,2 @@
-class Question < Card;
-    
+class Question < ActiveRecord::Base  
 end

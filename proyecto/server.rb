@@ -94,13 +94,9 @@ class App < Sinatra::Application
       @user = User.first
       @preguntas = Question.all
       @current_index = session[:current_index] || 0
-    
-      if @current_index >= @preguntas.length
-        @final_score = @user.points
-      else
-        @pregunta = @preguntas[params[:id].to_i - 1]
-        erb :exam
-      end
+      @pregunta = @preguntas[params[:id].to_i - 1]
+      erb :exam
+
     end
     
     def to_boolean(str)
@@ -111,16 +107,22 @@ class App < Sinatra::Application
     post '/game/module1/exam/:id' do
       question_id = params[:id]
       user_answer = params[:answer]
-      logger.info "Testing: #{params[:answer]}"
-      
       question = Question.find_by(id: question_id)
-      logger.info "Testing: #{question && question.answer == to_boolean(user_answer)}"
+      @preguntas = Question.all
+      logger.info "Testing: #{@preguntas.length}"
+
       if question && question.answer == to_boolean(user_answer)
         @user = User.find_by(id:params[:user_id])
         @user.points =( @user.points || 0 ) + 10
         @user.save
       end
+
       next_id = question_id.to_i + 1
+
+      if (next_id > @preguntas.length) 
+        redirect "/game"
+      end
+
       session[:current_index] = next_id
       redirect "/game/module1/exam/#{next_id}"
     end

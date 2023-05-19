@@ -32,9 +32,6 @@
 </head>
 
 <body>
-<% if @current_index >= @preguntas.length %>
-    <h1>Final Score: <%= @final_score %></h1>
-<% else %>
     <div>
         <h1>Pregunta</h1>
         <h2><%= @pregunta.question %></h2>
@@ -46,6 +43,5 @@
         </form>
         <h2>Puntaje: <%= @user.points %></h2>
     </div>
-<% end %>
 </body>
 </html>

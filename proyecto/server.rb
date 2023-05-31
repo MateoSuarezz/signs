@@ -122,8 +122,6 @@ class App < Sinatra::Application
       if (next_id > @preguntas.length) 
         redirect "/game"
       end
-
-      session[:current_index] = next_id
       redirect "/game/module1/exam/#{next_id}"
     end
     

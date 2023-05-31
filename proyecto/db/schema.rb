@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_165804) do
+=======
 ActiveRecord::Schema[7.0].define(version: 2023_05_31_142304) do
+>>>>>>> cca8cf7fc4807f2e49de6759c53cc4c296aea587
   create_table "assessments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "correct_answers"
@@ -26,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_142304) do
 
   create_table "modules", force: :cascade do |t|
     t.string "name"
-    t.integer "point"
+    t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,7 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_142304) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password"
-    t.integer "points"
   end
 
 end

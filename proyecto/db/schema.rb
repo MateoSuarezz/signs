@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_18_175736) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_142304) do
   create_table "assessments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "correct_answers"
@@ -20,7 +20,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_175736) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.integer "card_id"
     t.string "description"
     t.string "content_link"
   end

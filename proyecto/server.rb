@@ -8,6 +8,7 @@ require_relative './models/user'
 require_relative './models/card'
 require_relative './models/question'
 require_relative 'add_questions'
+require_relative 'add_modules'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
 # App, currently: Is connected to the database.
@@ -92,6 +93,7 @@ class App < Sinatra::Application
 
     get '/game/module1/exam/:id' do
       @user = User.first
+      @module = Modules.first
       @preguntas = Question.all
       @current_index = session[:current_index] || 0
       @pregunta = @preguntas[params[:id].to_i - 1]
@@ -109,12 +111,18 @@ class App < Sinatra::Application
       user_answer = params[:answer]
       question = Question.find_by(id: question_id)
       @preguntas = Question.all
-      logger.info "Testing: #{@preguntas.length}"
+
+      @module = Modules.find_by(id: 1)
+      
+
+      if (@module.points != 0 && question_id.to_i == 1)
+        @module.points = 0;
+        @module.save;
+      end
 
       if question && question.answer == to_boolean(user_answer)
-        @user = User.find_by(id:params[:user_id])
-        @user.points =( @user.points || 0 ) + 10
-        @user.save
+        @module.points =( @module.points ) + 10
+        @module.save
       end
 
       next_id = question_id.to_i + 1
@@ -128,5 +136,9 @@ class App < Sinatra::Application
     get '/ver_preguntas' do 
     	load 'add_questions.rb'
     	Question.all.to_json
+    end 
+    get '/ver_modulos' do 
+    	load 'add_modules.rb'
+    	Modules.all.to_json
     end 
 end

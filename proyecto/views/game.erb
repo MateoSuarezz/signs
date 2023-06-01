@@ -1,63 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Signs</title>
-
-    <style>
+  <title>Signs</title>
+  <style>
     body {
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-		font-family:"Inter", sans-serif;
-		
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
     }
-
+    
+    .header {
+      background-color: #00aaff;
+      text-align: center;
+      height: 25vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .header h1 {
+      font-family: "Intel", sans-serif;
+      font-size: 150px;
+      color: #ffffff;
+      margin: 0;
+    }
+    
     .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
+      display: flex;
+      justify-content: space-evenly;
+      padding: 50px;
+    }
+    
+    .module {
+      background-color: yellow;
+      padding: 20px;
+      text-align: center;
     }
 
-    .blue-stripe {
-        width: 1800px;
-        height: 180px;
-        background-color: #A3DEFF;
-        margin: 1 auto;
-        position: fixed;
-        top: 0%;
+    .corner-image {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      bottom: 20px;
+      right: 20px;
     }
-
-    .big-box {
-        width: 200px;
-        height: 200px;
-        background-color: #F6EA79;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        cursor: pointer;
+    
+    .module img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
     }
-
-    h2 {
-        color: black;
-        font-size: 50px;
-        text-align: center;
+    
+    .button-container {
+      margin-top: 20px;
     }
-    </style>
+    
+    .button-container a {
+      display: inline-block;
+      margin-right: 10px;
+      background-color: #00aaff;
+      color: #ffffff;
+      padding: 5px 10px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-
-    <div class="blue-stripe"></div>
-    <div class="container">
-	<h2>A B C</h2>
-        <div class="big-box">
-            <button onclick="location.href='/game/module1/exam/1'">Examen</button>
-            <button onclick="location.href='/game/module1/learn'">Aprender</button>
-        </div>
+  <div class="header">
+    <h1>B I E N V E N I D O S</h1>
+  </div>
+  
+  <div class="container">
+    <div class="module">
+      <h2>Abecedario</h2>
+      <img src="abecedario.jpg" alt="Abecedario">
+      <div class="button-container">
+        <a href="link_a_examen">Examen</a>
+        <a href="link_a_aprender">Aprender</a>
+      </div>
     </div>
+    
+    <div class="module">
+      <h2>Hola2</h2>
+      <img src="hola2.jpg" alt="Hola2">
+      <div class="button-container">
+        <a href="link_b_examen">Examen</a>
+        <a href="link_b_aprender">Aprender</a>
+      </div>
+    </div>
+    
+    <div class="module">
+      <h2>Hola1</h2>
+      <img src="hola1.jpg" alt="Hola1">
+      <div class="button-container">
+        <a href="link_c_examen">Examen</a>
+        <a href="link_c_aprender">Aprender</a>
+      </div>
+    </div>
+  </div>
+    <img class="corner-image" src="/images/Dipper.png" alt="Corner Image">
 </body>
 </html>

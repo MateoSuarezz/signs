@@ -9,6 +9,7 @@ require_relative './models/card'
 require_relative './models/question'
 require_relative 'add_questions'
 require_relative 'add_modules'
+require_relative 'add_cards'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
 # App, currently: Is connected to the database.
@@ -141,4 +142,11 @@ class App < Sinatra::Application
     	load 'add_modules.rb'
     	Modules.all.to_json
     end 
-end
+
+    get '/game/module1/learn' do
+      @module = Modules.first
+      @cards = Card.all
+      erb :learn
+    end
+
+  end

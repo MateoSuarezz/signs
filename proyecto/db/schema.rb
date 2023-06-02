@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_05_31_165804) do
-=======
-ActiveRecord::Schema[7.0].define(version: 2023_05_31_142304) do
->>>>>>> cca8cf7fc4807f2e49de6759c53cc4c296aea587
   create_table "assessments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "correct_answers"

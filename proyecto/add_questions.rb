@@ -13,11 +13,11 @@ ActiveRecord::Base.establish_connection(
 # Define a method to add questions to the table
 def add_questions
   questions_data = [
-    { question: '¿Esta seña corresponde a la letra A?', answer: true, content_link: '/images/letraA.png' },
-    { question: 'La letra "CH" fue sacada del alfabeto convencional, por ende, no tiene seña correspondiente', answer: false, content_link: '/images/letraCH.png' },
-    { question: 'Esta seña es la letra I', answer: true, content_link: '/images/letraI.png' },
-    { question: 'La letra "V" solo tiene una variante y es la que se ve en pantalla', answer: false, content_link: '/images/letraU.png' },
-    { question: 'Esta seña corresponde a la letra E', answer: false, content_link: '/images/letraE.png' },
+    { question: '¿Esta seña corresponde a la letra A?', answer: true, content_link: '/images/letraA.png', module_id: 1 },
+    { question: 'La letra "CH" fue sacada del alfabeto convencional, por ende, no tiene seña correspondiente', answer: false, content_link: '/images/letraCH.png', module_id: 1 },
+    { question: 'Esta seña es la letra I', answer: true, content_link: '/images/letraI.png', module_id: 1 },
+    { question: 'La letra "V" solo tiene una variante y es la que se ve en pantalla', answer: false, content_link: '/images/letraU.png', module_id: 1 },
+    { question: 'Esta seña corresponde a la letra E', answer: false, content_link: '/images/letraE.png', module_id: 1 },
   ]
 
   questions_data.each do |data|

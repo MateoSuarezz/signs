@@ -12,7 +12,7 @@ require_relative 'add_modules'
 require_relative 'add_cards'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
-# App, currently: Is connected to the database.
+#App, currently: Is connected to the database.
 class App < Sinatra::Application
   
 #Config about the database and the sets for the .erb
@@ -85,6 +85,7 @@ class App < Sinatra::Application
     end 
 
     get '/game' do
+      @module = Modules.all
       erb :game
     end
     

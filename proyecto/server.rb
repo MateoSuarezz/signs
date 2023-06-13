@@ -111,6 +111,7 @@ class App < Sinatra::Application
     post '/game/module1/exam/:id' do
       question_id = params[:id]
       user_answer = params[:answer]
+      button_next = params[:next]
       question = Question.find_by(id: question_id)
       @preguntas = Question.all
 
@@ -132,7 +133,10 @@ class App < Sinatra::Application
       if (next_id > @preguntas.length) 
         redirect "/game"
       end
-      redirect "/game/module1/exam/#{next_id}"
+
+      if(true == to_boolean(button_next))
+        redirect "/game/module1/exam/#{next_id}"
+      end
     end
     
     get '/ver_preguntas' do 

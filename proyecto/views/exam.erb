@@ -38,11 +38,10 @@
         <h2><%= @pregunta.question %></h2>
         <img src="<%= @pregunta.content_link %>" alt="imagen">
         <form action="/game/module1/exam/<%= @pregunta.id %>" method="post">
-            <input type="hidden" value="<%= @module.id %>" name="module_id">
             <button type="submit" name="answer" value="true">Sí</button>
             <button type="submit" name="answer" value="false">No</button>
+            <button type="submit" name="botton_next" value="true">Siguiente pregunta</button>
         </form>
-        <h2>Puntaje: <%= @module.points %></h2>
     </div>
 </body>
 </html>

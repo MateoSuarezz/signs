@@ -150,4 +150,20 @@ class App < Sinatra::Application
       erb :learn
     end
 
+    post '/game/module1/learn/:id' do
+      card_id = params[:id]
+      button_next = params[:next]
+      content = Card.find_by(id: cards_id)
+      @cards = Card.all
+
+      @module = Modules.find_by(id: 1)
+    
+      next_id = card_id.to_i + 1
+        if (next_id > @cards.length)
+          redirect "/game"
+        else
+          redirect "/game/module1/learn/#{next_id}"
+        end
+
+    end
   end

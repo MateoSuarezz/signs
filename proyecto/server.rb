@@ -119,8 +119,8 @@ class App < Sinatra::Application
       
 
       if (@module.points != 0 && question_id.to_i == 1)
-        @module.points = 0;
-        @module.save;
+        @module.points = 0
+        @module.save
       end
 
       if question && question.answer == to_boolean(user_answer)
@@ -128,17 +128,13 @@ class App < Sinatra::Application
         @module.save
       end
 
-      next_id = question_id.to_i + 1
-
-      if (next_id > @preguntas.length) 
-        redirect "/game"
-      end
-
-      if(true == to_boolean(button_next))
-        redirect "/game/module1/exam/#{next_id}"
-      end
+        next_id = question_id.to_i + 1
+        if (next_id > @preguntas.length)
+          redirect "/game"
+        else
+          redirect "/game/module1/exam/#{next_id}"
+        end
     end
-    
     get '/ver_preguntas' do 
     	load 'add_questions.rb'
     	Question.all.to_json

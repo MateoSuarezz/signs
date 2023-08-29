@@ -8,10 +8,11 @@ github 'sinatra/sinatra' do
   gem 'sinatra'
   gem 'sinatra-contrib'
 end
-
+group :test do
+  gem 'rspec'
+end
+gem 'simplecov', require: false, group: :test
 gem 'sinatra-activerecord'
 gem 'sqlite3'
 gem 'rake'
 gem 'activerecord'
-gem 'simplecov'
-gem 'rspec'

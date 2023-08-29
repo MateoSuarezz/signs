@@ -9,8 +9,10 @@ require_relative './models/card'
 require_relative './models/question'
 require_relative 'add_questions'
 require_relative 'add_modules'
+require 'simplecov' 
 require_relative 'add_cards'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
+
 
 #App, currently: Is connected to the database.
 class App < Sinatra::Application
@@ -63,7 +65,7 @@ class App < Sinatra::Application
     post '/user' do
       @user = User.find_or_create_by(email: params[:email])
       @user.password = params[:password]
-      if @user.save
+      if @user.save 
         redirect '/game'
       else
         "Error saving user: #{@user.errors.full_messages.join(', ')}"

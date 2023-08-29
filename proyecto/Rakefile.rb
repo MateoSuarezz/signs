@@ -1,7 +1,4 @@
-require 'sinatra/activerecord/tasks'
 require 'sinatra/activerecord/rake'
-
-
 require 'sinatra'
 require 'sinatra/activerecord' # Only if using ActiveRecord
 

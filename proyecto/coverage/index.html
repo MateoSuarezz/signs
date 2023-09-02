@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-08-29T17:44:20+00:00">2023-08-29T17:44:20+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-09-02T19:17:29+00:00">2023-09-02T19:17:29+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="yellow">
-  86.36%
+  87.76%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.86
+         0.88
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>44</b> relevant lines,
-    <span class="green"><b>38</b> lines covered</span> and
+    <b>49</b> relevant lines,
+    <span class="green"><b>43</b> lines covered</span> and
     <span class="red"><b>6</b> lines missed. </span>
     (<span class="yellow">
-  86.36%
+  87.76%
 </span>
 )
   </div>
@@ -95,9 +95,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#586adeaf6c4e249e4e8cc3a5cdcbb79cc81f2d99" class="src_link" title="models/question.rb">models/question.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">3</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">2</td>
+            <td class="cell--number">7</td>
+            <td class="cell--number">6</td>
+            <td class="cell--number">6</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -105,12 +105,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#87f8c6e72e0b81b2ca59333cdeca9f47ababc8f2" class="src_link" title="models/user.rb">models/user.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">66.67 %</td>
-            <td class="cell--number">6</td>
+            <td class="red strong cell--number t-file__coverage">75.00 %</td>
+            <td class="cell--number">8</td>
+            <td class="cell--number">4</td>
             <td class="cell--number">3</td>
-            <td class="cell--number">2</td>
             <td class="cell--number">1</td>
-            <td class="cell--number">0.67</td>
+            <td class="cell--number">0.75</td>
             
           </tr>
         
@@ -317,8 +317,8 @@
     
 
     <div class="t-line-summary">
-      <b>2</b> relevant lines.
-      <span class="green"><b>2</b> lines covered</span> and
+      <b>6</b> relevant lines.
+      <span class="green"><b>6</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -336,7 +336,7 @@
 
             
 
-            <code class="ruby">class Question &lt; ActiveRecord::Base  </code>
+            <code class="ruby">class Question &lt; ActiveRecord::Base</code>
           </li>
         </div>
       
@@ -347,18 +347,62 @@
 
             
 
-            <code class="ruby">    has_one :moludes</code>
+            <code class="ruby">    has_one :module</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="3">
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    validates :answer, presence: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="4">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    validates :question, presence: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="5">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    validates :content_link, presence: true, format: { with: /\A\/images\// }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    validates :module_id, presence: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
             
             
 
             
 
-            <code class="ruby">end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -372,7 +416,7 @@
     <h3>models/user.rb</h3>
     <h4>
       <span class="red">
-  66.67%
+  75.0%
 </span>
 
       lines covered
@@ -381,8 +425,8 @@
     
 
     <div class="t-line-summary">
-      <b>3</b> relevant lines.
-      <span class="green"><b>2</b> lines covered</span> and
+      <b>4</b> relevant lines.
+      <span class="green"><b>3</b> lines covered</span> and
       <span class="red"><b>1</b> lines missed.</span>
     </div>
 
@@ -394,13 +438,13 @@
     <ol>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="1">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="1">
+            
             
 
             
 
-            <code class="ruby">class User &lt; ActiveRecord::Base</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -411,12 +455,23 @@
 
             
 
+            <code class="ruby">class User &lt; ActiveRecord::Base</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    def authenticate(password)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="3">
+          <li class="missed" data-hits="0" data-linenumber="4">
             
             
 
@@ -427,7 +482,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="4">
+          <li class="never" data-hits="" data-linenumber="5">
             
             
 
@@ -438,7 +493,18 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="5">
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    validates :email, presence: true, uniqueness: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
             
             
 
@@ -449,7 +515,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="6">
+          <li class="never" data-hits="" data-linenumber="8">
             
             
 

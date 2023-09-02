@@ -89,16 +89,22 @@
       },
       "/src/models/user.rb": {
         "lines": [
+          null,
           1,
           1,
           0,
           null,
+          1,
           null,
           null
         ]
       },
       "/src/models/question.rb": {
         "lines": [
+          1,
+          1,
+          1,
+          1,
           1,
           1,
           null
@@ -129,6 +135,6 @@
         ]
       }
     },
-    "timestamp": 1693331060
+    "timestamp": 1693682249
   }
 }

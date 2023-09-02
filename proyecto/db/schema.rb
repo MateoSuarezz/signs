@@ -10,45 +10,5 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_02_143715) do
-  create_table "assessments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "correct_answers"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_assessments_on_user_id"
-  end
-
-  create_table "cards", force: :cascade do |t|
-    t.string "description"
-    t.string "content_link"
-  end
-
-  create_table "modules", force: :cascade do |t|
-    t.string "name"
-    t.integer "points"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "person", force: :cascade do |t|
-    t.string "name"
-    t.string "mail"
-    t.string "password"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.boolean "answer"
-    t.string "question"
-    t.string "content_link"
-    t.integer "module_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 0) do
 end

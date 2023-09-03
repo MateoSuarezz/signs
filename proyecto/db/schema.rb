@@ -37,9 +37,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_02_143715) do
     t.string "password"
   end
 
-  create_table "question", force: :cascade do |t|
+  create_table "questions", force: :cascade do |t|
     t.integer "question"
     t.boolean "answer"
+    t.string "content_link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "module_id"
   end
 

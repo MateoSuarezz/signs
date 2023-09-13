@@ -89,13 +89,11 @@
       },
       "/src/models/user.rb": {
         "lines": [
+          1,
+          1,
           null,
           1,
           1,
-          0,
-          null,
-          1,
-          null,
           null
         ]
       },
@@ -124,7 +122,7 @@
           null,
           1,
           null,
-          0,
+          1,
           null,
           null,
           null,
@@ -135,6 +133,6 @@
         ]
       }
     },
-    "timestamp": 1693755650
+    "timestamp": 1694624154
   }
 }

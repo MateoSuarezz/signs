@@ -1,8 +1,6 @@
-
 class User < ActiveRecord::Base
-    def authenticate(password)
-      self.password == password
-    end
-    validates :email, presence: true, uniqueness: true
+  has_secure_password
+
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
 end
-  

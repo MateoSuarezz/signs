@@ -63,12 +63,17 @@ class App < Sinatra::Application
     end
     
     post '/user' do
-      @user = User.find_or_create_by(email: params[:email])
-      @user.password = params[:password]
-      if @user.save 
-        redirect '/game'
+      existing_user = User.find_by(email: params[:email])
+      if existing_user
+        "El usuario con el correo electrónico #{params[:email]} ya existe."
       else
-        "Error saving user: #{@user.errors.full_messages.join(', ')}"
+        @user = User.find_or_create_by(email: params[:email])
+        @user.password = params[:password]
+        if @user.save 
+          redirect '/game'
+        else
+          "Error saving user: #{@user.errors.full_messages.join(', ')}"
+        end
       end
     end
     

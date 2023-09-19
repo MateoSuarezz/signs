@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_13_163616) do
-  create_table "assessments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "correct_answers"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_assessments_on_user_id"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_09_19_142338) do
   create_table "cards", force: :cascade do |t|
     t.string "description"
     t.string "content_link"
@@ -44,6 +36,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_163616) do
     t.integer "module_id"
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.integer "users_id", null: false
+    t.integer "cards_id", null: false
+    t.boolean "correct_answer", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cards_id"], name: "index_responses_on_cards_id"
+    t.index ["users_id"], name: "index_responses_on_users_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", null: false
@@ -51,4 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_163616) do
     t.string "password_digest"
   end
 
+  add_foreign_key "responses", "cards", column: "cards_id"
+  add_foreign_key "responses", "users", column: "users_id"
 end

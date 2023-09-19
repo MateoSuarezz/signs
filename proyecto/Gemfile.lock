@@ -40,6 +40,8 @@ GEM
     mustermann (1.1.2)
       ruby2_keywords (~> 0.0.1)
     rack (2.2.7)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rake (13.0.6)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
@@ -78,6 +80,7 @@ DEPENDENCIES
   activerecord
   bcrypt
   multi_json
+  rack-test (~> 1.1)
   rake
   rspec
   simplecov

@@ -4,13 +4,11 @@ require 'logger'
 require 'sinatra/activerecord'
 require 'active_record'
 require 'yaml'
-require_relative './models/user'
-require_relative './models/card'
-require_relative './models/question'
+Dir["./models/*.rb"].each {|file| require file }
 require_relative 'add_questions'
 require_relative 'add_modules'
-require 'simplecov' 
 require_relative 'add_cards'
+require 'simplecov' 
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
 
@@ -92,6 +90,16 @@ class App < Sinatra::Application
       # Check if the user is authenticated
       if session[:user_id]
         @module = Modules.all
+
+        #inicializar los puntos 
+        questions = Question.all 
+        @points = 0
+        questions.each do |q|
+          r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
+          if r.correct_answer
+            @points = @points + 10
+          end
+        end
         erb :game
       else
         # User is not authenticated, redirect to login or show an error
@@ -150,14 +158,17 @@ class App < Sinatra::Application
       @module = Modules.find_by(id: 1)
       
 
-      if (@module.points != 0 && question_id.to_i == 1)
-        @module.points = 0
-        @module.save
+      if (@points != 0 && question_id.to_i == 1)
+        questions = Question.where(module_id: 1) 
+        questions.each do |q|
+          r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
+          r.update(correct_answer: false)
+        end
       end
 
       if question && question.answer == to_boolean(user_answer)
-        @module.points =( @module.points ) + 10
-        @module.save
+        response = Response.find_by(users_id: session[:user_id], questions_id: question_id)
+        response.update(correct_answer: true)
       end
 
         next_id = question_id.to_i + 1

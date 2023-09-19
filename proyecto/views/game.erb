@@ -84,7 +84,7 @@
   <div class="header">
     <h1>B I E N V E N I D O S</h1>
   </div>
-  <input type="hidden" value="<%= @module.first %>" name="module_id">
+  <input type="hidden" value="<%= @points %>" name="module_id">
   <div class="container">
     <div class="module">
       <h2>ABECEDARIO</h2>
@@ -93,7 +93,7 @@
         <a href="/game/module1/exam/1">Examen</a>
         <a href="/game/module1/learn/1">Aprender</a>
       </div>
-      <progress id="file" max="50" value="<%= @module.first.points %>"> </progress>
+      <progress id="file" max="50" value="<%= @points %>"> </progress>
 
     </div>
     

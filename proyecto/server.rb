@@ -30,7 +30,10 @@ class App < Sinatra::Application
       enable :logging, :dump_errors, :raise_errors
     end
   end
-
+#Config sessions
+  configure do
+    enable :sessions
+  end
 #Config fot the inizialitation of the app 
     
   def initialize(app = nil)
@@ -58,10 +61,6 @@ class App < Sinatra::Application
     end
 
 #Config of all the posts and the gets
-    get '/' do
-      erb :index
-    end
-    
     post '/user' do
       existing_user = User.find_by(email: params[:email])
       if existing_user
@@ -70,6 +69,7 @@ class App < Sinatra::Application
         @user = User.find_or_create_by(email: params[:email])
         @user.password = params[:password]
         if @user.save 
+          session[:user_id] = @user.id
           redirect '/game'
         else
           "Error saving user: #{@user.errors.full_messages.join(', ')}"
@@ -77,28 +77,53 @@ class App < Sinatra::Application
       end
     end
     
+    
     post '/login' do
       @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
         redirect '/game'
       else
         redirect '/login'
       end
-    end
-    
-
-    get '/login'do
-      erb :login
-    end 
+    end    
 
     get '/game' do
-      @module = Modules.all
-      erb :game
+      # Check if the user is authenticated
+      if session[:user_id]
+        @module = Modules.all
+        erb :game
+      else
+        # User is not authenticated, redirect to login or show an error
+        redirect '/login'
+      end
     end
-    
+
+    get '/login' do
+      if session[:user_id]
+        redirect '/game'
+      else
+        erb :login
+      end
+    end
+
     get '/' do
-      erb :index
+      if session[:user_id]
+        redirect '/game'
+      else
+        erb :index
+      end
     end
+
+    get ' ' do
+      if session[:user_id]
+        redirect '/game'
+      else
+        erb :index
+      end
+    end
+
+    
 
     get '/game/module1/exam/:id' do
       @user = User.first

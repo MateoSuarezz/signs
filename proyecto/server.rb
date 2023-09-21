@@ -138,9 +138,11 @@ class App < Sinatra::Application
 
     
 
-    get '/game/module1/exam/:id' do
+    get '/game/module/:n/exam/:id' do
       @user = User.first
-      @modules = Modules.first
+
+      @n = params[:n]
+      @modules = Modules.find(@n.to_i)
       @preguntas = Question.all
       @current_index = session[:current_index] || 0
       @pregunta = @preguntas[params[:id].to_i - 1]
@@ -160,15 +162,16 @@ class App < Sinatra::Application
     end
 
     # Ruta para procesar las respuestas
-    post '/game/module1/exam/:id' do
+    post '/game/module/:n/exam/:id' do
+      @n = params[:n]
       question_id = params[:id]
       user_answer = params[:answer]
       button_next = params[:next]
       question = Question.find_by(id: question_id)
       @preguntas = Question.all
 
-      @modules = Modules.find_by(id: 1)
-      
+      @module = Modules.find_by(@n)
+
 
       if (question_id.to_i == 1)
         questions = Question.where(module_id: 1) 
@@ -187,7 +190,7 @@ class App < Sinatra::Application
         if (next_id > @preguntas.length)
           redirect "/game"
         else
-          redirect "/game/module1/exam/#{next_id}"
+          redirect "/game/module/#{@n.to_i}/exam/#{next_id}"
         end
     end
     get '/ver_preguntas' do 
@@ -199,16 +202,19 @@ class App < Sinatra::Application
     	Modules.all.to_json
     end 
 
-    get '/game/module1/learn/:id' do
-      @modules = Modules.first
+    get '/game/module/:n/learn/:id' do
+      
+      @n = params[:n]
+      @module = Modules.find(@n.to_i)
       @cards = Card.all
       @current_index = session[:current_index] || 0
       @carta = @cards[params[:id].to_i-1]
       erb :learn
     end
 
-    post '/game/module1/learn/:id' do
+    post '/game/module/:n/learn/:id' do
       card_id = params[:id]
+      @n = params[:n]
       button_next = params[:next]
       content = Card.find_by(id: card_id)
       @cards = Card.all
@@ -217,7 +223,7 @@ class App < Sinatra::Application
         if (next_id > @cards.length)
           redirect "/game"
         else
-          redirect "/game/module1/learn/#{next_id}"
+          redirect "/game/module/#{@n.to_i}/learn/#{next_id}"
         end
 
     end

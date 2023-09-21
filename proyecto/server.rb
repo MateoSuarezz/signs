@@ -146,6 +146,13 @@ class App < Sinatra::Application
       erb :exam
 
     end
+
+
+    get '/logout' do
+      session[:user_id] = nil
+      redirect '/login' 
+    end
+    
     
     def to_boolean(str)
       str == 'true'

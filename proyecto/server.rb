@@ -89,17 +89,21 @@ class App < Sinatra::Application
     get '/game' do
       # Check if the user is authenticated
       if session[:user_id]
-        @module = Modules.all
-
-        #inicializar los puntos 
-        questions = Question.all 
-        @points = 0
-        questions.each do |q|
-          r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
-          if r.correct_answer
-            @points = @points + 10
+        @modules = Modules.all
+        module_ids = @modules.pluck(:id)
+        @points = []
+        module_ids.each do |mod_id|
+          #inicializar los puntos 
+          questions = Question.where(module_id: mod_id)  
+          @points.push(0)
+          questions.each do |q|
+            r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
+            #por default las crea en false 
+            if r.correct_answer
+              @points[mod_id-1] = @points[mod_id-1] + 10 
+            end
           end
-        end
+        end 
         erb :game
       else
         # User is not authenticated, redirect to login or show an error
@@ -135,7 +139,7 @@ class App < Sinatra::Application
 
     get '/game/module1/exam/:id' do
       @user = User.first
-      @module = Modules.first
+      @modules = Modules.first
       @preguntas = Question.all
       @current_index = session[:current_index] || 0
       @pregunta = @preguntas[params[:id].to_i - 1]
@@ -155,10 +159,10 @@ class App < Sinatra::Application
       question = Question.find_by(id: question_id)
       @preguntas = Question.all
 
-      @module = Modules.find_by(id: 1)
+      @modules = Modules.find_by(id: 1)
       
 
-      if (@points != 0 && question_id.to_i == 1)
+      if (question_id.to_i == 1)
         questions = Question.where(module_id: 1) 
         questions.each do |q|
           r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
@@ -188,7 +192,7 @@ class App < Sinatra::Application
     end 
 
     get '/game/module1/learn/:id' do
-      @module = Modules.first
+      @modules = Modules.first
       @cards = Card.all
       @current_index = session[:current_index] || 0
       @carta = @cards[params[:id].to_i-1]

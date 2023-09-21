@@ -22,6 +22,7 @@ class App < Sinatra::Application
 
     set :root, File.dirname(__FILE__)
     set :views, File.join(root, 'views')
+    set :public_folder, File.dirname(__FILE__) + '/public'
 
     configure :development do
       register Sinatra::Reloader
@@ -219,5 +220,15 @@ class App < Sinatra::Application
           redirect "/game/module1/learn/#{next_id}"
         end
 
+    end
+
+    get '/ranking' do 
+      @users = User
+        .joins(:responses)
+        .where(responses: { correct_answer: true })
+        .group('users.id')
+        .order(Arel.sql('COUNT(responses.id) DESC'))
+        .select('users.*, COUNT(responses.id) AS correct_responses_count')
+        erb :ranking
     end
   end

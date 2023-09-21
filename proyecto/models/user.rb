@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
-  has_many  :responses
+  has_many  :responses,  foreign_key: 'users_id'
 end

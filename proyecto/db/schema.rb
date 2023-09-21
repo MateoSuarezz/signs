@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_19_142338) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_21_145451) do
   create_table "cards", force: :cascade do |t|
     t.string "description"
     t.string "content_link"
+    t.integer "module_id"
   end
 
   create_table "modules", force: :cascade do |t|

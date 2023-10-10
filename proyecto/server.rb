@@ -193,6 +193,7 @@ class App < Sinatra::Application
           redirect "/game/module/#{@n.to_i}/exam/#{next_id}"
         end
     end
+    
     get '/ver_preguntas' do 
     	load 'add_questions.rb'
     	Question.all.to_json

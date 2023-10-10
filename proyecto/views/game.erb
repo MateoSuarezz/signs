@@ -84,16 +84,21 @@
   <div class="header">
     <h1>B I E N V E N I D O S</h1>
   </div>
-  <input type="hidden" value="<%= @module.first %>" name="module_id">
+    <div class="logout-button">
+    <a href="/logout">Logout</a>
+    <a href="/ranking">Ranking</a>
+  </div>
+
+  <input type="hidden" value="<%= @points[0] %>" name="module_id">
   <div class="container">
     <div class="module">
       <h2>ABECEDARIO</h2>
       <img src="/images/abecedario.png" alt="ABECEDARIO">
       <div class="button-container">
-        <a href="/game/module1/exam/1">Examen</a>
-        <a href="/game/module1/learn/1">Aprender</a>
+        <a href="/game/module/1/exam/1">Examen</a>
+        <a href="/game/module/1/learn/1">Aprender</a>
       </div>
-      <progress id="file" max="50" value="<%= @module.first.points %>"> </progress>
+      <progress id="file" max="50" value="<%= @points[0] %>"> </progress>
 
     </div>
     
@@ -104,7 +109,7 @@
         <a href="link_b_examen">Examen</a>
         <a href="link_b_aprender">Aprender</a>
       </div>
-      <progress id="file" max="100" value=""> % </progress>
+      <progress id="file" max="100" value="<%= @points[1] %>"> % </progress>
     </div>
     
     <div class="module">
@@ -115,7 +120,7 @@
         <a href="link_c_aprender">Aprender</a>
       </div>
 
-      <progress id="file" max="100" value=""> % </progress>
+      <progress id="file" max="100" value="<%= @points[2] %>"> % </progress>
 
     </div>
   </div>

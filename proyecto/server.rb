@@ -4,13 +4,11 @@ require 'logger'
 require 'sinatra/activerecord'
 require 'active_record'
 require 'yaml'
-require_relative './models/user'
-require_relative './models/card'
-require_relative './models/question'
+Dir["./models/*.rb"].each {|file| require file }
 require_relative 'add_questions'
 require_relative 'add_modules'
-require 'simplecov' 
 require_relative 'add_cards'
+require 'simplecov' 
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
 
@@ -24,13 +22,17 @@ class App < Sinatra::Application
 
     set :root, File.dirname(__FILE__)
     set :views, File.join(root, 'views')
+    set :public_folder, File.dirname(__FILE__) + '/public'
 
     configure :development do
       register Sinatra::Reloader
       enable :logging, :dump_errors, :raise_errors
     end
   end
-
+#Config sessions
+  configure do
+    enable :sessions
+  end
 #Config fot the inizialitation of the app 
     
   def initialize(app = nil)
@@ -58,83 +60,137 @@ class App < Sinatra::Application
     end
 
 #Config of all the posts and the gets
-    get '/' do
-      erb :index
-    end
-    
     post '/user' do
-      @user = User.find_or_create_by(email: params[:email])
-      @user.password = params[:password]
-      if @user.save 
-        redirect '/game'
+      existing_user = User.find_by(email: params[:email])
+      if existing_user
+        "El usuario con el correo electrónico #{params[:email]} ya existe."
       else
-        "Error saving user: #{@user.errors.full_messages.join(', ')}"
+        @user = User.find_or_create_by(email: params[:email])
+        @user.password = params[:password]
+        if @user.save 
+          session[:user_id] = @user.id
+          redirect '/game'
+        else
+          "Error saving user: #{@user.errors.full_messages.join(', ')}"
+        end
       end
     end
+    
     
     post '/login' do
       @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
         redirect '/game'
       else
         redirect '/login'
       end
-    end
-    
-
-    get '/login'do
-      erb :login
-    end 
+    end    
 
     get '/game' do
-      @module = Modules.all
-      erb :game
-    end
-    
-    get '/' do
-      erb :index
+      # Check if the user is authenticated
+      if session[:user_id]
+        @modules = Modules.all
+        module_ids = @modules.pluck(:id)
+        @points = []
+        module_ids.each do |mod_id|
+          #inicializar los puntos 
+          questions = Question.where(module_id: mod_id)  
+          @points.push(0)
+          questions.each do |q|
+            r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
+            #por default las crea en false 
+            if r.correct_answer
+              @points[mod_id-1] = @points[mod_id-1] + 10 
+            end
+          end
+        end 
+        erb :game
+      else
+        # User is not authenticated, redirect to login or show an error
+        redirect '/login'
+      end
     end
 
-    get '/game/module1/exam/:id' do
+    get '/login' do
+      if session[:user_id]
+        redirect '/game'
+      else
+        erb :login
+      end
+    end
+
+    get '/' do
+      if session[:user_id]
+        redirect '/game'
+      else
+        erb :index
+      end
+    end
+
+    get ' ' do
+      if session[:user_id]
+        redirect '/game'
+      else
+        erb :index
+      end
+    end
+
+    
+
+    get '/game/module/:n/exam/:id' do
       @user = User.first
-      @module = Modules.first
+
+      @n = params[:n]
+      @modules = Modules.find(@n.to_i)
       @preguntas = Question.all
       @current_index = session[:current_index] || 0
       @pregunta = @preguntas[params[:id].to_i - 1]
       erb :exam
 
     end
+
+
+    get '/logout' do
+      session[:user_id] = nil
+      redirect '/login' 
+    end
+    
     
     def to_boolean(str)
       str == 'true'
     end
 
     # Ruta para procesar las respuestas
-    post '/game/module1/exam/:id' do
+    post '/game/module/:n/exam/:id' do
+      @n = params[:n]
       question_id = params[:id]
       user_answer = params[:answer]
       button_next = params[:next]
       question = Question.find_by(id: question_id)
       @preguntas = Question.all
 
-      @module = Modules.find_by(id: 1)
-      
+      @module = Modules.find_by(@n)
 
-      if (@module.points != 0 && question_id.to_i == 1)
-        @module.points = 0
-        @module.save
+
+      if (question_id.to_i == 1)
+        questions = Question.where(module_id: 1) 
+        questions.each do |q|
+          r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
+          r.update(correct_answer: false)
+        end
       end
 
       if question && question.answer == to_boolean(user_answer)
-        @module.points =( @module.points ) + 10
-        @module.save
+        response = Response.find_by(users_id: session[:user_id], questions_id: question_id)
+        response.update(correct_answer: true)
       end
 
         next_id = question_id.to_i + 1
         if (next_id > @preguntas.length)
           redirect "/game"
         else
-          redirect "/game/module1/exam/#{next_id}"
+          redirect "/game/module/#{@n.to_i}/exam/#{next_id}"
         end
     end
     get '/ver_preguntas' do 
@@ -146,16 +202,19 @@ class App < Sinatra::Application
     	Modules.all.to_json
     end 
 
-    get '/game/module1/learn/:id' do
-      @module = Modules.first
+    get '/game/module/:n/learn/:id' do
+      
+      @n = params[:n]
+      @module = Modules.find(@n.to_i)
       @cards = Card.all
       @current_index = session[:current_index] || 0
       @carta = @cards[params[:id].to_i-1]
       erb :learn
     end
 
-    post '/game/module1/learn/:id' do
+    post '/game/module/:n/learn/:id' do
       card_id = params[:id]
+      @n = params[:n]
       button_next = params[:next]
       content = Card.find_by(id: card_id)
       @cards = Card.all
@@ -164,8 +223,18 @@ class App < Sinatra::Application
         if (next_id > @cards.length)
           redirect "/game"
         else
-          redirect "/game/module1/learn/#{next_id}"
+          redirect "/game/module/#{@n.to_i}/learn/#{next_id}"
         end
 
+    end
+
+    get '/ranking' do 
+      @users = User
+        .joins(:responses)
+        .where(responses: { correct_answer: true })
+        .group('users.id')
+        .order(Arel.sql('COUNT(responses.id) DESC'))
+        .select('users.*, COUNT(responses.id) AS correct_responses_count')
+        erb :ranking
     end
   end

@@ -61,7 +61,7 @@
         <% @users.each do |user|%>
             <tr>
                 <td> <%= pos%> </td>
-                <td> <%= user.email %> </td>
+                <td> <%= user.name %> </td>
                 <td> <%= (user.correct_responses_count) *10 %> </td>
             </tr>
         <% pos = pos + 1%>

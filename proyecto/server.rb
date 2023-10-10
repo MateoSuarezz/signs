@@ -62,10 +62,12 @@ class App < Sinatra::Application
 #Config of all the posts and the gets
     post '/user' do
       existing_user = User.find_by(email: params[:email])
-      if existing_user
-        "El usuario con el correo electrónico #{params[:email]} ya existe."
+      existing_name = User.find_by(name: params[:name])
+      if existing_user || existing_name
+        "El usuario o el correo electrónico ya existe."
       else
         @user = User.find_or_create_by(email: params[:email])
+        @user.name = params[:name]
         @user.password = params[:password]
         if @user.save 
           session[:user_id] = @user.id

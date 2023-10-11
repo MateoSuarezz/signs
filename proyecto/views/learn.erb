@@ -5,7 +5,10 @@
     <link rel="stylesheet" href="/css/learn.css">
 </head>
   <body>
-      <div>
+    <div class = "options">
+        <a href="/game" class = "back-button">Volver</a>
+    </div>
+      <div class = "card">
           <h1>DEFINICION</h1>
           <h2><%= @carta.description %></h2>
           <img src="<%= @carta.content_link %>" alt="imagen">
@@ -14,6 +17,10 @@
           </form>
       </div>
   </body>
+  <footer>
+      <p>Signs - Equipo FLDSMDFR</p>
+      <p>UNRC - 2023</p>
+    </footer>
 
 </html>
 

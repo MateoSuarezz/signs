@@ -2,12 +2,13 @@ body {
     background-color: #ffffff;
     margin: 0;
     padding: 0;
+    size: fit-content;
   }
   
   .header {
     background-color: #81BFE1;
     text-align: center;
-    height: 25vh;
+    height: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,7 +16,7 @@ body {
   
   .header h1 {
     font-family: "Intel", sans-serif;
-    font-size: 150px;
+    font-size: 120px;
     color: #ffffff;
     margin: 0;
   }

@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="shortcut icon" href="estrella.ico">
+    <link rel="shortcut icon" href="/images/hand.ico">
     <link rel="stylesheet" href="/css/exam.css">
     <title>Signs</title>
+    <script>
+        function setFormValue(valor) {
+            document.getElementById("answer").value = valor;
+            if ((valor == 'true') == <%= @correct_answer %>) {
+                document.getElementById(valor).classList.add("correct");
+            } else {
+                document.getElementById(valor).classList.add("incorrect");
+            }
+            document.getElementById("true").disabled = true;
+            document.getElementById("false").disabled = true;
+            document.querySelector("input[type=submit]").disabled = false;
+        }
+    </script>
 </head>
 
 <body>
+    
+    <div class = "options">
+        <a href="/game" class = "back-button">Volver</a>
+    </div>
     <div>
         <h1>Pregunta</h1>
         <h2><%= @pregunta.question %></h2>
         <img src="<%= @pregunta.content_link %>" alt="imagen">
+        <div class = "buttons">
         <form action="/game/module/<%= @n %>/exam/<%= @pregunta.id %>" method="post">
-            <label>
-                <input type="radio" name="answer" value="true"> Verdadero
-            </label>
-            <label>
-                <input type="radio" name="answer" value="false"> Falso
-            </label>
-            <input type="submit" value="Enviar respuesta">
+            <input type ="hidden" name = "answer" id= "answer">
+            <button class = "answer-button true" id = "true" type="button" onclick="setFormValue('true')">Verdadero</button>
+            <button class = "answer-button false" id = "false" type="button" onclick="setFormValue('false')">Falso</button>
+            <input type="submit" value="Siguiente" disabled> 
         </form>
+        </div>
     </div>
 </body>
 </html>

@@ -1,93 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="icon" type="image/estrella" href="estrella.ico">
+  <link rel="shortcut icon" href="/images/hand.ico">
+  <link rel="stylesheet" href="/css/game.css">
 
   <title>Signs</title>
-  <style>
-    body {
-      background-color: #ffffff;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .header {
-      background-color: #81BFE1;
-      text-align: center;
-      height: 25vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .header h1 {
-      font-family: "Intel", sans-serif;
-      font-size: 150px;
-      color: #ffffff;
-      margin: 0;
-    }
-    
-    .container {
-      display: flex;
-      justify-content: space-evenly;
-      padding: 50px;
-    }
-    
-    .module {
-      background-color: #F6EA79;
-      padding: 20px;
-      text-align: center;
-      font-family: "Intel", sans-serif;
-    }
-
-    .progress-bar {
-      background-color: #e0e0e0;
-      height: 10px;
-      margin-top: 10px;
-      display: block;
-    }
-
-    .progress-bar:target {
-      background-color: #00aaff;
-    }
-
-    .corner-image {
-      position: fixed;
-      width: 300px;
-      height: 300px;
-      bottom: 20px;
-      right: 20px;
-    }
-
-    .module img {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 10px;
-    }
-    
-    .button-container {
-      margin-top: 20px;
-    }
-    
-    .button-container a {
-      display: inline-block;
-      margin-right: 10px;
-      background-color: #00aaff;
-      color: #ffffff;
-      padding: 5px 10px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-  </style>
 </head>
 <body>
   <div class="header">
     <h1>B I E N V E N I D O S</h1>
   </div>
-    <div class="logout-button">
-    <a href="/logout">Logout</a>
-    <a href="/ranking">Ranking</a>
-  </div>
+  
+ 
 
   <input type="hidden" value="<%= @points[0] %>" name="module_id">
   <div class="container">
@@ -124,7 +48,29 @@
 
     </div>
   </div>
-    <img class="corner-image" src="/images/Dipper.png" alt="Corner Image">
+  
+ <div class="menu-buttons">
+  <img class="corner-image" src="/images/Dipper.png" alt="Corner Image" onclick="toggleMenu()">
+  <div class="toggle-bar">
+    <a class="btn menu" href="/logout">Logout</a>
+    <a class="btn menu" href="/ranking">Ranking</a>
+    <a class="btn menu" href="/profile">Profile</a> 
+  </div>
+</div>
+
+
+    <footer>
+      <p>Signs - Equipo FLDSMDFR</p>
+      <p>UNRC - 2023</p>
+    </footer>
+
+
+      <script>
+      function toggleMenu() {
+        var menu = document.querySelector('.toggle-bar');
+        menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+      }
+  </script>
 </body>
 
 

@@ -62,10 +62,12 @@ class App < Sinatra::Application
 #Config of all the posts and the gets
     post '/user' do
       existing_user = User.find_by(email: params[:email])
-      if existing_user
-        "El usuario con el correo electrónico #{params[:email]} ya existe."
+      existing_name = User.find_by(name: params[:name])
+      if existing_user || existing_name
+        "El usuario o el correo electrónico ya existe."
       else
         @user = User.find_or_create_by(email: params[:email])
+        @user.name = params[:name]
         @user.password = params[:password]
         if @user.save 
           session[:user_id] = @user.id
@@ -139,15 +141,14 @@ class App < Sinatra::Application
     
 
     get '/game/module/:n/exam/:id' do
-      @user = User.first
-
       @n = params[:n]
       @modules = Modules.find(@n.to_i)
       @preguntas = Question.all
       @current_index = session[:current_index] || 0
-      @pregunta = @preguntas[params[:id].to_i - 1]
+      id_question = params[:id].to_i
+      @pregunta = @preguntas[id_question -1]
+      @correct_answer = Question.find(id_question).answer.to_s  
       erb :exam
-
     end
 
 
@@ -169,7 +170,6 @@ class App < Sinatra::Application
       button_next = params[:next]
       question = Question.find_by(id: question_id)
       @preguntas = Question.all
-
       @module = Modules.find_by(@n)
 
 
@@ -193,10 +193,12 @@ class App < Sinatra::Application
           redirect "/game/module/#{@n.to_i}/exam/#{next_id}"
         end
     end
+    
     get '/ver_preguntas' do 
     	load 'add_questions.rb'
     	Question.all.to_json
     end 
+
     get '/ver_modulos' do 
     	load 'add_modules.rb'
     	Modules.all.to_json

@@ -10,10 +10,8 @@
   <div class="header">
     <h1>B I E N V E N I D O S</h1>
   </div>
-    <div class="menu-buttons">
-    <a class ="btn menu" href="/logout">Logout</a>
-    <a class ="btn menu"href="/ranking">Ranking</a>
-  </div>
+  
+ 
 
   <input type="hidden" value="<%= @points[0] %>" name="module_id">
   <div class="container">
@@ -50,11 +48,29 @@
 
     </div>
   </div>
-    <img class="corner-image" src="/images/Dipper.png" alt="Corner Image">
+  
+ <div class="menu-buttons">
+  <img class="corner-image" src="/images/Dipper.png" alt="Corner Image" onclick="toggleMenu()">
+  <div class="toggle-bar">
+    <a class="btn menu" href="/logout">Logout</a>
+    <a class="btn menu" href="/ranking">Ranking</a>
+    <a class="btn menu" href="/profile">Profile</a> 
+  </div>
+</div>
+
+
     <footer>
       <p>Signs - Equipo FLDSMDFR</p>
       <p>UNRC - 2023</p>
     </footer>
+
+
+      <script>
+      function toggleMenu() {
+        var menu = document.querySelector('.toggle-bar');
+        menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+      }
+  </script>
 </body>
 
 

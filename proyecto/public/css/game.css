@@ -1,0 +1,141 @@
+body {
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  size: fit-content;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: #6aadd1;
+  text-align: center;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header h1 {
+  font-family: "Intel", sans-serif;
+  font-size: 120px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 50px;
+}
+
+.module {
+  width: 250px;
+  background-color: #f6ea79;
+  padding: 5px;
+  text-align: center;
+  font-family: "Intel", sans-serif;
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  height: 10px;
+  margin-top: 10px;
+  display: block;
+}
+
+.progress-bar:target {
+  background-color: #00aaff;
+}
+
+.corner-image {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  bottom: 5vh;
+  right: 0%;
+}
+
+.module img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+.button-container a {
+  display: inline-block;
+  margin-right: 10px;
+  background-color: #00aaff;
+  color: #ffffff;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.button-container a:hover {
+  background-color: #f082ac;
+}
+
+.btn.menu {
+  background-color: #00aaff;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 5px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn.menu:hover,
+.btn.menu:focus {
+  background-color: #f082ac;
+}
+
+.menu-buttons {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+footer {
+  margin-top: auto;
+  width: 100%;
+  background-color: #6aadd1;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-family: "Intel", sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  font-style: italic;
+  margin-left: 5px;
+  margin-right: 5px;
+}

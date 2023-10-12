@@ -139,15 +139,14 @@ class App < Sinatra::Application
     
 
     get '/game/module/:n/exam/:id' do
-      @user = User.first
-
       @n = params[:n]
       @modules = Modules.find(@n.to_i)
       @preguntas = Question.all
       @current_index = session[:current_index] || 0
-      @pregunta = @preguntas[params[:id].to_i - 1]
+      id_question = params[:id].to_i
+      @pregunta = @preguntas[id_question -1]
+      @correct_answer = Question.find(id_question).answer.to_s  
       erb :exam
-
     end
 
 
@@ -169,7 +168,6 @@ class App < Sinatra::Application
       button_next = params[:next]
       question = Question.find_by(id: question_id)
       @preguntas = Question.all
-
       @module = Modules.find_by(@n)
 
 

@@ -1,0 +1,120 @@
+body {
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: fit-content;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+}
+
+img {
+  width: 200px;
+  height: 150px;
+  margin: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  color: black;
+  background-color: #00aaff;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+input[type="submit"]:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  border: none;
+}
+
+.back-button {
+  background-color: #00aaff;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 5px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+}
+
+.back-button:hover,
+.back-button:focus {
+  background-color: #f082ac;
+}
+
+.options {
+  display: flex;
+  justify-content: left;
+  width: -webkit-fill-available;
+}
+
+.answer-button {
+  margin: 5px;
+  width: 200px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.correct {
+  background-color: #6ad267;
+  font-weight: bold;
+  cursor: not-allowed;
+}
+
+.incorrect {
+  background-color: #f082ac;
+  font-weight: bold;
+  cursor: not-allowed;
+}
+
+footer {
+  margin-top: auto;
+  width: 100%;
+  background-color: #6aadd1;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-family: "Intel", sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  font-style: italic;
+  margin-left: 5px;
+  margin-right: 5px;
+}

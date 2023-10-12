@@ -8,6 +8,28 @@ body {
   flex-direction: column;
 }
 
+
+.toggle-bar {
+  display: none; /* Initially hide the toggle bar */
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  color: #fff;
+}
+
+.toggle-bar a {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 20px;
+}
+
+
+
+
 .header {
   background-color: #6aadd1;
   text-align: center;
@@ -55,7 +77,13 @@ body {
   position: absolute;
   bottom: 5vh;
   right: 0%;
+  transition: transform 0.5s;
 }
+
+.corner-image:hover {
+  transform: scale(1.1);
+}
+
 
 .module img {
   width: 100px;

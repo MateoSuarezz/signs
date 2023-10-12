@@ -1,0 +1,127 @@
+.header {
+  background-color: #81bfe1;
+  text-align: center;
+  height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: fit-content;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+}
+
+img {
+  width: 200px;
+  height: 150px;
+  border: 10px solid white;
+  margin-bottom: 15px;
+  border-radius: 5%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+input[type="radio"] {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+input[type="submit"] {
+  color: black;
+  background-color: #6ad267;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+footer {
+  margin-top: auto;
+  width: 100%;
+  background-color: #6aadd1;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-family: "Intel", sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  font-style: italic;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.card {
+  border: 16px solid #013750;
+  border-radius: 11%;
+  margin: 50px;
+  padding: 30px;
+  background-color:#00aaff;
+}
+
+.back-button {
+  background-color: #00aaff;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 5px;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+}
+
+.options {
+  display: flex;
+  justify-content: left;
+  width: -webkit-fill-available;
+}
+
+.back-button:hover,
+.back-button:focus {
+  background-color: #f082ac;
+}
+
+button {
+  width: 200px;
+  background-color: white;
+  height: 30px;
+}

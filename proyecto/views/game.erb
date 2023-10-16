@@ -52,12 +52,50 @@
  <div class="menu-buttons">
   <img class="corner-image" src="/images/Dipper.png" alt="Corner Image" onclick="toggleMenu()">
   <div class="toggle-bar">
-    <a class="btn menu" href="/logout">Logout</a>
+    <a class="btn menu" href="/logout">Cerrar sesion</a>
     <a class="btn menu" href="/ranking">Ranking</a>
-    <a class="btn menu" href="/profile">Profile</a> 
+    <a class="btn menu" href="#" onclick="showProfile()">Perfil</a>
   </div>
 </div>
-
+    <div class="profile-container" style="display: none;">
+        <div class="frame">
+        <div class="center">
+        <div class="profile">
+          <div class="name">Hola <%= @user.name %> !</div>
+          <div class="image">
+            <img id="selectedProfilePicture" src="/images/profile8.jpeg" width="70" height="70">
+          </div>
+            <select id="profilePictureSelect" class = "btn option">
+              <option value="/images/profile1.jpeg">👩🏽‍🦱</option>
+              <option value="/images/profile2.jpeg">👩🏽‍🦳</option>
+              <option value="/images/profile3.jpeg">🧑🏼</option>
+              <option value="/images/profile4.jpeg">👩🏼‍🦰</option>
+              <option value="/images/profile5.jpeg">🧛🏻‍♂️</option>
+              <option value="/images/profile6.jpeg">🧒🏻</option>
+              <option value="/images/profile7.jpeg">👩🏻</option>
+              <option value="/images/profile8.jpeg">🎃</option>
+              <option value="/images/profile9.jpeg">👱🏻‍♀️</option>
+              <option value="/images/profile10.jpeg">🧓🏻</option>
+            </select>         
+        </div>
+        
+        <div class="stats">
+          <div class="box">
+            <% total_points = @points.sum %>
+            <% max_points = @modules.count * 100 %>
+            <% completed_modules = ((total_points)*100) / 150 %>
+            <span class="value"><%= completed_modules %> % </span>
+            <span class="parameter"> Modulos <br> completados </span>
+          </div>
+          <div class="box">
+            <% best_points = @points.max %>
+            <span class="value"><%= best_points %></span>
+            <span class="parameter">Mejor <br> puntacion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
 
     <footer>
       <p>Signs - Equipo FLDSMDFR</p>
@@ -65,12 +103,41 @@
     </footer>
 
 
-      <script>
+    <script>
+      var profilePictures = [
+        "/images/profile1.jpeg",
+        "/images/profile2.jpeg",
+        "/images/profile3.jpeg",
+        "/images/profile4.jpeg",
+        "/images/profile5.jpeg",
+        "/images/profile6.jpeg",
+        "/images/profile7.jpeg",
+        "/images/profile8.jpeg",
+        "/images/profile9.jpeg",
+      ];
       function toggleMenu() {
         var menu = document.querySelector('.toggle-bar');
         menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
       }
-  </script>
+
+      function showProfile() {
+        var profileContainer = document.querySelector('.profile-container');
+        if (profileContainer.style.display === 'none' || profileContainer.style.display === '') {
+          profileContainer.style.display = 'block';
+        } else {
+          profileContainer.style.display = 'none';
+        }
+      }
+
+    var profilePictureSelect = document.getElementById('profilePictureSelect');
+    var selectedProfilePicture = document.getElementById('selectedProfilePicture');
+
+    profilePictureSelect.addEventListener('change', function () {
+      var selectedValue = profilePictureSelect.value;
+      selectedProfilePicture.src = selectedValue;
+    });
+    </script>
+
 </body>
 
 

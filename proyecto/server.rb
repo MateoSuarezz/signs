@@ -92,6 +92,7 @@ class App < Sinatra::Application
     get '/game' do
       # Check if the user is authenticated
       if session[:user_id]
+        @user = User.find_by(id: session[:user_id])
         @modules = Modules.all
         module_ids = @modules.pluck(:id)
         @points = []

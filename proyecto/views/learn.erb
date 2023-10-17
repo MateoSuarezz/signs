@@ -12,7 +12,7 @@
           <h1>DEFINICION</h1>
           <h2><%= @carta.description %></h2>
           <img src="<%= @carta.content_link %>" alt="imagen">
-          <form action="/game/module/<%= @n %>/learn/<%= @carta.id %>" method="post">
+          <form action="/learn/<%= @module %>/<%= @carta.id %>" method="post">
               <button type="submit" name="next" value="false">SIGUIENTE</button>
           </form>
       </div>

@@ -142,12 +142,9 @@ class App < Sinatra::Application
     
 
     get '/game/module/:n/exam/:id' do
-      @n = params[:n]
-      @modules = Modules.find(@n.to_i)
-      @preguntas = Question.all
-      @current_index = session[:current_index] || 0
+      @module = params[:n].to_i
       id_question = params[:id].to_i
-      @pregunta = @preguntas[id_question -1]
+      @pregunta = Question.find(id_question)
       @correct_answer = Question.find(id_question).answer.to_s  
       erb :exam
     end
@@ -164,17 +161,16 @@ class App < Sinatra::Application
     end
 
     # Ruta para procesar las respuestas
-    post '/game/module/:n/exam/:id' do
-      @n = params[:n].to_i
-      question_id = params[:id]
+    post '/exam/check-answer/:n/:id' do
+      @module = params[:n].to_i
+      question_id = params[:id].to_i
       user_answer = params[:answer]
       button_next = params[:next]
-      question = Question.find_by(id: question_id)
-      @preguntas = Question.where(module_id: @n)
-      @module = Modules.find(@n)
+      question = Question.find(question_id)
+      @preguntas = Question.where(module_id: @module)
 
-      if question_id ==  1
-        questions = Question.where(module_id: @n) 
+      if question_id == 1
+        questions = Question.where(module_id: @module) 
         questions.each do |q|
           r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
           r.update(correct_answer: false)
@@ -186,11 +182,11 @@ class App < Sinatra::Application
         response.update(correct_answer: true)
       end
 
-        next_id = question_id.to_i + 1
-        if (next_id > @n * @preguntas.length)
+        next_id = question_id + 1
+        if (next_id > @module * 5)
           redirect "/game"
         else
-          redirect "/game/module/#{@n.to_i}/exam/#{next_id}"
+          redirect "/game/module/#{@module}/exam/#{next_id}"
         end
     end
     

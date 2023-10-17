@@ -18,6 +18,11 @@ def add_questions
     { question: 'Esta seña es la letra I', answer: true, content_link: '/images/letraI.png', module_id: 1 },
     { question: 'La letra "V" solo tiene una variante y es la que se ve en pantalla', answer: false, content_link: '/images/letraU.png', module_id: 1 },
     { question: 'Esta seña corresponde a la letra E', answer: false, content_link: '/images/letraE.png', module_id: 1 },
+    { question: 'Esta seña representa abuelo', answer: true, content_link: '/images/abuelo.png', module_id: 2 },
+    { question: 'Lo que describe esta seña es hermanos', answer: false, content_link: '/images/hijos.png', module_id: 2 },
+    { question: 'Esta seña corresponde a tio', answer: false, content_link: '/images/papa.png', module_id: 2 },
+    { question: 'Jeje caiste, esta seña si corresponde a tio/tia', answer: false, content_link: '/images/nietos.png', module_id: 2 },
+    { question: 'En esta imagen se dice mama', answer: true, content_link: '/images/mama.png', module_id: 2 }
   ]
 
   questions_data.each do |data|

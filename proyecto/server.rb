@@ -164,22 +164,21 @@ class App < Sinatra::Application
 
     # Ruta para procesar las respuestas
     post '/game/module/:n/exam/:id' do
-      @n = params[:n]
+      @n = params[:n].to_i
       question_id = params[:id]
       user_answer = params[:answer]
       button_next = params[:next]
       question = Question.find_by(id: question_id)
-      @preguntas = Question.all
-      @module = Modules.find_by(@n)
+      @preguntas = Question.where(module_id: @n)
+      @module = Modules.find(@n)
 
-
-      if (question_id.to_i == 1)
-        questions = Question.where(module_id: 1) 
+      if question_id ==  1
+        questions = Question.where(module_id: @n) 
         questions.each do |q|
           r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
           r.update(correct_answer: false)
         end
-      end
+    end 
 
       if question && question.answer == to_boolean(user_answer)
         response = Response.find_by(users_id: session[:user_id], questions_id: question_id)
@@ -187,7 +186,7 @@ class App < Sinatra::Application
       end
 
         next_id = question_id.to_i + 1
-        if (next_id > @preguntas.length)
+        if (next_id > @n * @preguntas.length)
           redirect "/game"
         else
           redirect "/game/module/#{@n.to_i}/exam/#{next_id}"
@@ -206,23 +205,24 @@ class App < Sinatra::Application
 
     get '/game/module/:n/learn/:id' do
       
-      @n = params[:n]
-      @module = Modules.find(@n.to_i)
-      @cards = Card.all
+      @n = params[:n].to_i
+      id = params[:id].to_i
+      @module = Modules.find(@n)
+      @cards = Card.where(module_id: @n) 
       @current_index = session[:current_index] || 0
-      @carta = @cards[params[:id].to_i-1]
+      @carta = Card.find(id)
       erb :learn
     end
 
     post '/game/module/:n/learn/:id' do
       card_id = params[:id]
-      @n = params[:n]
+      @n = params[:n].to_i
       button_next = params[:next]
       content = Card.find_by(id: card_id)
-      @cards = Card.all
+      @cards = Card.where(module_id: @n)
     
       next_id = card_id.to_i + 1
-        if (next_id > @cards.length)
+        if (next_id > @cards.length * @n)
           redirect "/game"
         else
           redirect "/game/module/#{@n.to_i}/learn/#{next_id}"

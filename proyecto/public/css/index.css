@@ -1,0 +1,96 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #81bfe1;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  size: fit-content;
+}
+
+.white-stripe {
+  width: 1800px;
+  height: 344px;
+  background-color: white;
+  margin: 1 auto;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.centered-element {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+}
+
+h1 {
+  font-size: 200px;
+  color: black;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  line-height: 121px;
+}
+
+.login-form {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 50px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 200px;
+  font-family: "Inter", sans-serif;
+}
+
+.login-form input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #f6ea79;
+  color: black;
+  border: none;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+}
+
+.login-form .have-account {
+  margin-top: 25px;
+  color: black;
+  font-family: "Inter", sans-serif;
+}
+img {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  bottom: 20vh;
+  right: 0%;
+}
+
+footer {
+  margin-top: auto;
+  width: 100%;
+  background-color: #6aadd1;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  font-family: "Intel", sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  font-style: italic;
+  margin-left: 5px;
+  margin-right: 5px;
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_21_145451) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_170859) do
   create_table "cards", force: :cascade do |t|
     t.string "description"
     t.string "content_link"
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_21_145451) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "name"
   end
 
   add_foreign_key "responses", "questions", column: "questions_id"

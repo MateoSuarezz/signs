@@ -10,23 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_02_143715) do
-  create_table "assessments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "correct_answers"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_assessments_on_user_id"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_170859) do
   create_table "cards", force: :cascade do |t|
     t.string "description"
     t.string "content_link"
+    t.integer "module_id"
   end
 
   create_table "modules", force: :cascade do |t|
     t.string "name"
-    t.integer "point"
+    t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,12 +31,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_02_143715) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer "question"
     t.boolean "answer"
+    t.string "question"
     t.string "content_link"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "module_id"
   end
 
+  create_table "responses", force: :cascade do |t|
+    t.integer "users_id", null: false
+    t.integer "questions_id", null: false
+    t.boolean "correct_answer", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["questions_id"], name: "index_responses_on_questions_id"
+    t.index ["users_id"], name: "index_responses_on_users_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "name"
+  end
+
+  add_foreign_key "responses", "questions", column: "questions_id"
+  add_foreign_key "responses", "users", column: "users_id"
 end

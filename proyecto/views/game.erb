@@ -1,99 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="icon" type="image/estrella" href="estrella.ico">
+  <link rel="shortcut icon" href="/images/hand.ico">
+  <link rel="stylesheet" href="/css/game.css">
 
   <title>Signs</title>
-  <style>
-    body {
-      background-color: #ffffff;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .header {
-      background-color: #81BFE1;
-      text-align: center;
-      height: 25vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .header h1 {
-      font-family: "Intel", sans-serif;
-      font-size: 150px;
-      color: #ffffff;
-      margin: 0;
-    }
-    
-    .container {
-      display: flex;
-      justify-content: space-evenly;
-      padding: 50px;
-    }
-    
-    .module {
-      background-color: #F6EA79;
-      padding: 20px;
-      text-align: center;
-      font-family: "Intel", sans-serif;
-    }
-
-    .progress-bar {
-      background-color: #e0e0e0;
-      height: 10px;
-      margin-top: 10px;
-      display: block;
-    }
-
-    .progress-bar:target {
-      background-color: #00aaff;
-    }
-
-    .corner-image {
-      position: fixed;
-      width: 300px;
-      height: 300px;
-      bottom: 20px;
-      right: 20px;
-    }
-
-    .module img {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 10px;
-    }
-    
-    .button-container {
-      margin-top: 20px;
-    }
-    
-    .button-container a {
-      display: inline-block;
-      margin-right: 10px;
-      background-color: #00aaff;
-      color: #ffffff;
-      padding: 5px 10px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-  </style>
 </head>
 <body>
   <div class="header">
     <h1>B I E N V E N I D O S</h1>
   </div>
-  <input type="hidden" value="<%= @module.first %>" name="module_id">
+  
+ 
+
+  <input type="hidden" value="<%= @points[0] %>" name="module_id">
   <div class="container">
     <div class="module">
       <h2>ABECEDARIO</h2>
       <img src="/images/abecedario.png" alt="ABECEDARIO">
       <div class="button-container">
-        <a href="/game/module1/exam/1">Examen</a>
-        <a href="/game/module1/learn/1">Aprender</a>
+        <a href="/game/module/1/exam/1">Examen</a>
+        <a href="/game/module/1/learn/1">Aprender</a>
       </div>
-      <progress id="file" max="50" value="<%= @module.first.points %>"> </progress>
+      <progress id="file" max="50" value="<%= @points[0] %>"> </progress>
 
     </div>
     
@@ -104,22 +33,111 @@
         <a href="link_b_examen">Examen</a>
         <a href="link_b_aprender">Aprender</a>
       </div>
-      <progress id="file" max="100" value=""> % </progress>
+      <progress id="file" max="100" value="<%= @points[2] %>"> % </progress>
     </div>
     
     <div class="module">
       <h2>FAMILIA Y AMIGOS</h2>
       <img src="/images/familia.png" alt="Familia Y Amigos">
       <div class="button-container">
-        <a href="link_c_examen">Examen</a>
-        <a href="link_c_aprender">Aprender</a>
+        <a href="/game/module/2/exam/6">Examen</a>
+        <a href="/game/module/2/learn/6">Aprender</a>
       </div>
 
-      <progress id="file" max="100" value=""> % </progress>
+      <progress id="file" max="100" value="<%= @points[1] %>"> % </progress>
 
     </div>
   </div>
-    <img class="corner-image" src="/images/Dipper.png" alt="Corner Image">
+  
+ <div class="menu-buttons">
+  <img class="corner-image" src="/images/Dipper.png" alt="Corner Image" onclick="toggleMenu()">
+  <div class="toggle-bar">
+    <a class="btn menu" href="/logout">Cerrar sesion</a>
+    <a class="btn menu" href="/ranking">Ranking</a>
+    <a class="btn menu" href="#" onclick="showProfile()">Perfil</a>
+  </div>
+</div>
+    <div class="profile-container" style="display: none;">
+        <div class="frame">
+        <div class="center">
+        <div class="profile">
+          <div class="name">Hola <%= @user.name %> !</div>
+          <div class="image">
+            <img id="selectedProfilePicture" src="/images/profile8.jpeg" width="70" height="70">
+          </div>
+            <select id="profilePictureSelect" class = "btn option">
+              <option value="/images/profile1.jpeg">👩🏽‍🦱</option>
+              <option value="/images/profile2.jpeg">👩🏽‍🦳</option>
+              <option value="/images/profile3.jpeg">🧑🏼</option>
+              <option value="/images/profile4.jpeg">👩🏼‍🦰</option>
+              <option value="/images/profile5.jpeg">🧛🏻‍♂️</option>
+              <option value="/images/profile6.jpeg">🧒🏻</option>
+              <option value="/images/profile7.jpeg">👩🏻</option>
+              <option value="/images/profile8.jpeg">🎃</option>
+              <option value="/images/profile9.jpeg">👱🏻‍♀️</option>
+              <option value="/images/profile10.jpeg">🧓🏻</option>
+            </select>         
+        </div>
+        
+        <div class="stats">
+          <div class="box">
+            <% total_points = @points.sum %>
+            <% max_points = @modules.count * 100 %>
+            <% completed_modules = ((total_points)*100) / 150 %>
+            <span class="value"><%= completed_modules %> % </span>
+            <span class="parameter"> Modulos <br> completados </span>
+          </div>
+          <div class="box">
+            <% best_points = @points.max %>
+            <span class="value"><%= best_points %></span>
+            <span class="parameter">Mejor <br> puntacion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <footer>
+      <p>Signs - Equipo FLDSMDFR</p>
+      <p>UNRC - 2023</p>
+    </footer>
+
+
+    <script>
+      var profilePictures = [
+        "/images/profile1.jpeg",
+        "/images/profile2.jpeg",
+        "/images/profile3.jpeg",
+        "/images/profile4.jpeg",
+        "/images/profile5.jpeg",
+        "/images/profile6.jpeg",
+        "/images/profile7.jpeg",
+        "/images/profile8.jpeg",
+        "/images/profile9.jpeg",
+      ];
+      function toggleMenu() {
+        var menu = document.querySelector('.toggle-bar');
+        menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+      }
+
+      function showProfile() {
+        var profileContainer = document.querySelector('.profile-container');
+        if (profileContainer.style.display === 'none' || profileContainer.style.display === '') {
+          profileContainer.style.display = 'block';
+        } else {
+          profileContainer.style.display = 'none';
+        }
+      }
+
+    var profilePictureSelect = document.getElementById('profilePictureSelect');
+    var selectedProfilePicture = document.getElementById('selectedProfilePicture');
+
+    profilePictureSelect.addEventListener('change', function () {
+      var selectedValue = profilePictureSelect.value;
+      selectedProfilePicture.src = selectedValue;
+    });
+    </script>
+
 </body>
 
 

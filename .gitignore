@@ -1,2 +1,2 @@
-db/duo_development.sqlite3
-db/test.sqlite3
+proyecto/db/*.sqlite3
+proyecto/db/duo_development.sqlite3

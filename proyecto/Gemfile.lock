@@ -29,6 +29,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    bcrypt (3.1.19)
     concurrent-ruby (1.2.2)
     diff-lcs (1.5.0)
     docile (1.4.0)
@@ -39,6 +40,8 @@ GEM
     mustermann (1.1.2)
       ruby2_keywords (~> 0.0.1)
     rack (2.2.7)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rake (13.0.6)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
@@ -75,7 +78,9 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  bcrypt
   multi_json
+  rack-test (~> 1.1)
   rake
   rspec
   simplecov

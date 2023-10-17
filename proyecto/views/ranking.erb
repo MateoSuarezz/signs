@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Tabla de Posiciones - Signs </title>
+    <link rel="shortcut icon" href="/images/hand.ico">
+    <link rel="stylesheet" href="/css/ranking.css">
+</head>
+<body>
+
+    <h1> Tabla de Posiciones </h1>
+    <table>
+        <tr>
+            <th> Puesto </th>
+            <th> Correo del usuario </th>
+            <th> Puntos totales </th>
+        </tr>
+        <% pos = 1%>
+        <% @users.each do |user|%>
+            <tr>
+                <td> <%= pos%> </td>
+                <td> <%= user.name %> </td>
+                <td> <%= (user.correct_responses_count) *10 %> </td>
+            </tr>
+        <% pos = pos + 1%>
+        <% end%>
+    </table>
+    <footer>
+      <p>Signs - Equipo FLDSMDFR</p>
+      <p>UNRC - 2023</p>
+    </footer>
+</body>
+</html>

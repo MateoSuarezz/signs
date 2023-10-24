@@ -92,6 +92,7 @@ class App < Sinatra::Application
     get '/game' do
       # Check if the user is authenticated
       if session[:user_id]
+        @user = User.find_by(id: session[:user_id])
         @modules = Modules.all
         module_ids = @modules.pluck(:id)
         @points = []
@@ -138,16 +139,11 @@ class App < Sinatra::Application
       end
     end
 
-    
 
     get '/game/module/:n/exam/:id' do
-      @n = params[:n]
-      @modules = Modules.find(@n.to_i)
-      @preguntas = Question.all
-      @current_index = session[:current_index] || 0
-      id_question = params[:id].to_i
-      @pregunta = @preguntas[id_question -1]
-      @correct_answer = Question.find(id_question).answer.to_s  
+      @module = params[:n].to_i
+      @pregunta = Question.find(params[:id].to_i)
+      @correct_answer = @pregunta.answer.to_s  
       erb :exam
     end
 
@@ -157,78 +153,51 @@ class App < Sinatra::Application
       redirect '/login' 
     end
     
-    
-    def to_boolean(str)
-      str == 'true'
-    end
-
     # Ruta para procesar las respuestas
-    post '/game/module/:n/exam/:id' do
-      @n = params[:n]
-      question_id = params[:id]
-      user_answer = params[:answer]
-      button_next = params[:next]
-      question = Question.find_by(id: question_id)
-      @preguntas = Question.all
-      @module = Modules.find_by(@n)
+    post '/exam/check-answer/:n/:id' do
+      @module = params[:n].to_i
+      question_id = params[:id].to_i
+      user_answer = params[:answer] == 'true'
+      question = Question.find(question_id)
+      @preguntas = Question.where(module_id: @module)
 
-
-      if (question_id.to_i == 1)
-        questions = Question.where(module_id: 1) 
-        questions.each do |q|
+      #update userscore 
+      if question_id == 1 || question_id == 6 || question_id == 11
+        @preguntas.each do |q|
           r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
           r.update(correct_answer: false)
         end
-      end
+      end 
 
-      if question && question.answer == to_boolean(user_answer)
+      if question.answer == user_answer
         response = Response.find_by(users_id: session[:user_id], questions_id: question_id)
         response.update(correct_answer: true)
       end
 
-        next_id = question_id.to_i + 1
-        if (next_id > @preguntas.length)
-          redirect "/game"
-        else
-          redirect "/game/module/#{@n.to_i}/exam/#{next_id}"
-        end
+      next_id = question_id + 1
+      if (next_id > @module * 5)
+        redirect "/game"
+      else
+        redirect "/game/module/#{@module}/exam/#{next_id}"
+      end
     end
-    
-    get '/ver_preguntas' do 
-    	load 'add_questions.rb'
-    	Question.all.to_json
-    end 
 
-    get '/ver_modulos' do 
-    	load 'add_modules.rb'
-    	Modules.all.to_json
-    end 
-
-    get '/game/module/:n/learn/:id' do
-      
-      @n = params[:n]
-      @module = Modules.find(@n.to_i)
-      @cards = Card.all
-      @current_index = session[:current_index] || 0
-      @carta = @cards[params[:id].to_i-1]
+    get '/learn/:n/:id' do
+      @module = params[:n].to_i
+      @carta = Card.find(params[:id].to_i)
       erb :learn
     end
 
-    post '/game/module/:n/learn/:id' do
-      card_id = params[:id]
-      @n = params[:n]
-      button_next = params[:next]
-      content = Card.find_by(id: card_id)
-      @cards = Card.all
-    
-      next_id = card_id.to_i + 1
-        if (next_id > @cards.length)
-          redirect "/game"
-        else
-          redirect "/game/module/#{@n.to_i}/learn/#{next_id}"
-        end
-
-    end
+    post '/learn/:n/:id' do
+      card_id = params[:id].to_i
+      module_id = params[:n].to_i
+      cards = Card.where(module_id: module_id)
+      if card_id + 1 > cards.length * module_id 
+        redirect "/game" 
+      else 
+        redirect "/learn/#{module_id}/#{card_id + 1}"
+      end 
+    end 
 
     get '/ranking' do 
       @users = User

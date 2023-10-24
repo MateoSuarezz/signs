@@ -13,11 +13,18 @@ ActiveRecord::Base.establish_connection(
 # Define a method to add questions to the table
 def add_cards
   cards_data = [
-    { description: 'Es una A', content_link: '/images/letraA.png' },
-    { description: 'Es una E', content_link: '/images/letraE.png' },
-    { description: 'Es una U', content_link: '/images/letraU.png' },
-    { description: 'Es una O', content_link: '/images/letraO.png' },
-    { description: 'Es una I', content_link: '/images/letraI.png' }
+    { description: 'Es una A', content_link: '/images/letraA.png',module_id: 1 },
+    { description: 'Es una E', content_link: '/images/letraE.png',module_id: 1 },
+    { description: 'Es una U', content_link: '/images/letraU.png',module_id: 1 },
+    { description: 'Es una O', content_link: '/images/letraO.png',module_id: 1 },
+    { description: 'Es una I', content_link: '/images/letraI.png',module_id: 1 },
+    { description: 'Esta es la seña para decir mama', content_link: '/images/mama.png',module_id: 2 },
+    { description: 'Esta es la seña para decir abuelo', content_link: '/images/abuelo.png',module_id: 2 },
+    { description: 'Esta es la seña para decir papa', content_link: '/images/papa.png',module_id: 2 },
+    { description: 'Hijo seña izquierda - Hija seña derecha', content_link: '/images/hijos.png',module_id: 2 },
+    { description: 'Nieto seña izquierda - Nieta seña derecha', content_link: '/images/nietos.png',module_id: 2 }
+
+    
     # Add more question data as needed
   ]
 

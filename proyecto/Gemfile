@@ -18,3 +18,4 @@ gem 'rake'
 gem 'activerecord'
 gem 'bcrypt'
 gem 'rack-test', '~> 1.1'
+gem 'rubocop', require: false

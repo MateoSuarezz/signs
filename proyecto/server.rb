@@ -127,11 +127,11 @@ class App < Sinatra::Application
       if session[:user_id]
         redirect '/game'
       else
-        erb :index
+        redirect '/signup' 
       end
     end
 
-    get ' ' do
+    get '/signup' do
       if session[:user_id]
         redirect '/game'
       else

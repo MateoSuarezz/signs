@@ -1,15 +1,74 @@
 require 'rack/test'
+require 'factory_bot'
+require File.dirname(__FILE__)  + '/factories.rb'
+require File.dirname(__FILE__) + '/../server.rb'
 
 RSpec.describe 'Sinatra App' do
   include Rack::Test::Methods
 
   def app
-    # Include the name of the class corresponding to the Application defined in server.rb
     App
   end
 
-  it 'testing server routes' do
-    get '/login' # Access the root route
-    expect(last_response.status).to eq(200) # Verify the HTTP response status code
+  context 'when no user is logged in' do
+    routes_to_test = [
+      '/login',
+      '/signup', 
+      '/ranking',
+    ]
+  
+    routes_to_test.each do |route|
+      it "returns a 200 status for #{route}" do
+        get route
+        expect(last_response.status).to eq(200) # Verify the HTTP response status code
+      end
+    end 
+
+    it 'redirects to the login page when accessing /game' do
+      get '/game'
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to include('/login')
+    end
+
+    it 'redirects to the signup page when accessing /' do
+      get '/'
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to include('/signup')
+    end 
+
+    it 'redirects to the login page when logging out' do
+      get '/logout'
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to include('/login')
+    end 
   end
-end
+
+  context 'when a user is logged in' do
+    before do
+      @user = FactoryBot.build(:user)
+      post '/login', params = { email: @user.email, password: @user.password }
+    end
+
+    it 'accesses /game when a user is logged in' do
+      get '/game'
+      expect(last_response.status).to eq(200) # Verifica que se cargue la página
+    end
+
+    it 'redirects to /game when accessing /' do
+      get '/'
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to include('/game')
+    end
+
+    it 'redirects to /game when accessing /login' do
+      get '/login'
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to include('/game')
+    end
+  end
+end 

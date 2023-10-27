@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 ruby '2.7.5'
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 gem 'multi_json'
 
@@ -9,15 +11,21 @@ github 'sinatra/sinatra' do
   gem 'sinatra-contrib'
 end
 group :test do
-  gem 'rspec'
   gem 'factory_bot'
   gem 'faker'
+  gem 'rspec'
 end
-gem 'simplecov', require: false, group: :test
-gem 'sinatra-activerecord'
-gem 'sqlite3'
-gem 'rake'
 gem 'activerecord'
 gem 'bcrypt'
 gem 'rack-test', '~> 1.1'
-gem 'rubocop', require: false
+gem 'rake'
+gem 'simplecov', require: false, group: :test
+gem 'sinatra-activerecord'
+gem 'sqlite3'
+
+group :rubocop do
+  gem 'rubocop', require: false
+  gem 'rubocop-factory_bot', '~> 2.24'
+  gem 'rubocop-rake', '~> 0.6.0'
+  gem 'rubocop-rspec', '~> 2.24', '>= 2.24.1'
+end

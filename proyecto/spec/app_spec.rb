@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rack/test'
 require 'factory_bot'
-require File.dirname(__FILE__)  + '/factories.rb'
-require File.dirname(__FILE__) + '/../server.rb'
+require "#{File.dirname(__FILE__)}/factories.rb"
+require "#{File.dirname(__FILE__)}/../server.rb"
 
 RSpec.describe 'Sinatra App' do
   include Rack::Test::Methods
@@ -13,16 +15,16 @@ RSpec.describe 'Sinatra App' do
   context 'when no user is logged in' do
     routes_to_test = [
       '/login',
-      '/signup', 
-      '/ranking',
+      '/signup',
+      '/ranking'
     ]
-  
+
     routes_to_test.each do |route|
       it "returns a 200 status for #{route}" do
         get route
         expect(last_response.status).to eq(200) # Verify the HTTP response status code
       end
-    end 
+    end
 
     it 'redirects to the login page when accessing /game' do
       get '/game'
@@ -36,20 +38,20 @@ RSpec.describe 'Sinatra App' do
       expect(last_response).to be_redirect
       follow_redirect!
       expect(last_request.url).to include('/signup')
-    end 
+    end
 
     it 'redirects to the login page when logging out' do
       get '/logout'
       expect(last_response).to be_redirect
       follow_redirect!
       expect(last_request.url).to include('/login')
-    end 
+    end
   end
 
   context 'when a user is logged in' do
     before do
       @user = FactoryBot.create(:user)
-      post '/login', params = { email: @user.email, password: @user.password }
+      post '/login', { email: @user.email, password: @user.password }
     end
 
     it 'accesses /game when a user is logged in' do
@@ -71,4 +73,4 @@ RSpec.describe 'Sinatra App' do
       expect(last_request.url).to include('/game')
     end
   end
-end 
+end

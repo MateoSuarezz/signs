@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
 require 'sinatra/activerecord'
 require 'simplecov'
@@ -8,8 +10,8 @@ ENV['APP_ENV'] ||= 'test'
 
 ActiveRecord::Base.logger.level = 1
 
-require File.expand_path('../../config/environment.rb', __FILE__)
-require_relative '../server.rb'
+require File.expand_path('../config/environment.rb', __dir__)
+require_relative '../server'
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

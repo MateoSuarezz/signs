@@ -84,21 +84,19 @@ class App < Sinatra::Application
 
     def load_points
       @user = User.find_by(id: session[:user_id])
-        @modules = Modules.all
-        module_ids = @modules.pluck(:id)
-        @points = []
-        module_ids.each do |mod_id|
-          #inicializar los puntos 
-          questions = Question.where(module_id: mod_id)  
-          @points.push(0)
-          questions.each do |q|
-            r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
-            #por default las crea en false 
-            if r.correct_answer
-              @points[mod_id-1] = @points[mod_id-1] + 10 
+      @modules = Modules.all
+      @points = []
+      @modules.each do |mod|
+        questions = Question.where(module_id: mod.id)  
+        p = 0 
+        questions.each do |q|
+          r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id) 
+          if r.correct_answer
+             p = p + 10 
             end
           end
-        end 
+        end
+        @points.push(p) 
     end 
 
     post '/login' do

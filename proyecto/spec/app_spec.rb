@@ -48,7 +48,7 @@ RSpec.describe 'Sinatra App' do
 
   context 'when a user is logged in' do
     before do
-      @user = FactoryBot.build(:user)
+      @user = FactoryBot.create(:user)
       post '/login', params = { email: @user.email, password: @user.password }
     end
 

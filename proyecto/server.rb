@@ -78,21 +78,12 @@ class App < Sinatra::Application
       end
     end
     
-    
-    post '/login' do
-      @user = User.find_by(email: params[:email])
-      if @user && @user.authenticate(params[:password])
-        session[:user_id] = @user.id
-        redirect '/game'
-      else
-        redirect '/login'
-      end
-    end    
+    def user_logged_in? 
+      session[:user_id] != nil
+    end
 
-    get '/game' do
-      # Check if the user is authenticated
-      if session[:user_id]
-        @user = User.find_by(id: session[:user_id])
+    def load_points
+      @user = User.find_by(id: session[:user_id])
         @modules = Modules.all
         module_ids = @modules.pluck(:id)
         @points = []
@@ -108,6 +99,22 @@ class App < Sinatra::Application
             end
           end
         end 
+    end 
+
+    post '/login' do
+      @user = User.find_by(email: params[:email])
+      if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        redirect '/game'
+      else
+        redirect '/login'
+      end
+    end    
+
+    get '/game' do
+      # Check if the user is authenticated
+      if user_logged_in?
+        load_points
         erb :game
       else
         # User is not authenticated, redirect to login or show an error
@@ -116,7 +123,7 @@ class App < Sinatra::Application
     end
 
     get '/login' do
-      if session[:user_id]
+      if user_logged_in?
         redirect '/game'
       else
         erb :login

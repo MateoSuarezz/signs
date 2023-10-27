@@ -1,0 +1,819 @@
+$ docker compose run app bundle exec rubocop
+Inspecting 32 files
+CCCCCCCCCCCCCCCCCCCCCCCWCCWCWCWC
+
+Offenses:
+
+Gemfile:1:1: C: Layout/EndOfLine: Carriage return character detected.
+ruby '2.7.5' ...
+^^^^^^^^^^^^
+Gemfile:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+ruby '2.7.5'
+^
+Gemfile:3:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+source "https://rubygems.org"
+       ^^^^^^^^^^^^^^^^^^^^^^
+Gemfile:17:1: C: [Correctable] Bundler/OrderedGems: Gems should be sorted in an alphabetical order within their section of the Gemfile. Gem rake should appear before sqlite3.
+gem 'rake'
+^^^^^^^^^^
+Gemfile:18:1: C: [Correctable] Bundler/OrderedGems: Gems should be sorted in an alphabetical order within their section of the Gemfile. Gem activerecord should appear before rake.
+gem 'activerecord'
+^^^^^^^^^^^^^^^^^^
+Gemfile:21:30: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+gem 'rubocop', require: false
+
+Rakefile.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+require 'sinatra/activerecord/rake' ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Rakefile.rb:1:1: C: Naming/FileName: The name of this source file (Rakefile.rb) should use snake_case.
+require 'sinatra/activerecord/rake'
+^
+Rakefile.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require 'sinatra/activerecord/rake'
+^
+Rakefile.rb:7:13: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    require "./server"
+            ^^^^^^^^^^
+Rakefile.rb:10:1: C: [Correctable] Layout/TrailingEmptyLines: 1 trailing blank lines detected.
+add_cards.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# add_cards.rb ...
+^^^^^^^^^^^^^^
+add_cards.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+# add_cards.rb
+^
+add_cards.rb:14:1: C: Metrics/MethodLength: Method has too many lines. [18/10]
+def add_cards ...
+^^^^^^^^^^^^^
+add_cards.rb:16:66: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    { description: 'Es una A', content_link: '/images/letraA.png',module_id: 1 },
+                                                                 ^
+add_cards.rb:17:66: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    { description: 'Es una E', content_link: '/images/letraE.png',module_id: 1 },
+                                                                 ^
+add_cards.rb:18:66: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    { description: 'Es una U', content_link: '/images/letraU.png',module_id: 1 },
+                                                                 ^
+add_cards.rb:19:66: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    { description: 'Es una O', content_link: '/images/letraO.png',module_id: 1 },
+                                                                 ^
+add_cards.rb:20:66: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    { description: 'Es una I', content_link: '/images/letraI.png',module_id: 1 },
+                                                                 ^
+add_cards.rb:21:87: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    { description: 'Esta es la seña para decir mama', content_link: '/images/mama.png',module_id: 2 },
+                                                                                      ^
+add_cards.rb:22:91: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    { description: 'Esta es la seña para decir abuelo', content_link: '/images/abuelo.png',module_id: 2 },
+                                                                                          ^
+add_cards.rb:23:87: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    { description: 'Esta es la seña para decir papa', content_link: '/images/papa.png',module_id: 2 },
+                                                                                      ^
+add_cards.rb:24:96: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    { description: 'Hijo seña izquierda - Hija seña derecha', content_link: '/images/hijos.png',module_id: 2 },
+                                                                                               ^
+add_cards.rb:25:99: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    { description: 'Nieto seña izquierda - Nieta seña derecha', content_link: '/images/nietos.png',module_id: 2 }
+                                                                                                  ^
+add_cards.rb:27:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+add_modules.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+# add_questions.rb
+^
+add_modules.rb:14:1: C: Metrics/MethodLength: Method has too many lines. [11/10]
+def add_names ...
+^^^^^^^^^^^^^
+add_modules.rb:16:36: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+    { name: 'ABECEDARIO', points: 0},
+                                   ^
+add_modules.rb:18:44: C: [Correctable] Style/TrailingCommaInArrayLiteral: Avoid comma after the last item of an array.
+    { name: 'FAMILIA Y AMIGOS', points: 0 },
+                                           ^
+add_modules.rb:27:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+add_modules.rb:32:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.
+add_modules.rb:33:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.
+add_questions.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# add_questions.rb ...
+^^^^^^^^^^^^^^^^^^
+add_questions.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+# add_questions.rb
+^
+add_questions.rb:14:1: C: Metrics/MethodLength: Method has too many lines. [20/10]
+def add_questions ...
+^^^^^^^^^^^^^^^^^
+add_questions.rb:16:121: C: [Correctable] Layout/LineLength: Line is too long. [121/120]
+    { question: '¿Esta seña corresponde a la letra A?', answer: true, content_link: '/images/letraA.png', module_id: 1 },
+                                                                                                                        ^
+add_questions.rb:17:121: C: [Correctable] Layout/LineLength: Line is too long. [178/120]
+    { question: 'La letra "CH" fue sacada del alfabeto convencional, por ende, no tiene seña correspondiente', answer: false, content_link: '/images/letraCH.png', module_id: 1 },
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+add_questions.rb:19:121: C: [Correctable] Layout/LineLength: Line is too long. [152/120]
+    { question: 'La letra "V" solo tiene una variante y es la que se ve en pantalla', answer: false, content_link: '/images/letraU.png', module_id: 1 },
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+add_questions.rb:22:121: C: [Correctable] Layout/LineLength: Line is too long. [138/120]
+    { question: 'Basta de bromas, esto es serio. Asi se dice abuelo/a', answer: true, content_link: '/images/abuelos.png', module_id: 2 },
+                                                                                                                        ^^^^^^^^^^^^^^^^^^
+add_questions.rb:24:121: C: [Correctable] Layout/LineLength: Line is too long. [122/120]
+    { question: 'Lo que describe esta seña es hermanos', answer: false, content_link: '/images/hijos.png', module_id: 2 },
+                                                                                                                        ^^
+add_questions.rb:29:48: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+    data[:answer] = false if data[:answer].nil?  # Set answer to false if not specified
+                                               ^
+add_questions.rb:30:121: C: [Correctable] Layout/LineLength: Line is too long. [129/120]
+    q = Question.find_or_initialize_by(question: data[:question], content_link: data[:content_link], module_id: data[:module_id])
+                                                                                                                        ^^^^^^^^^
+add_questions.rb:32:29: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+    q.answer = data[:answer]  # Set the answer attribute explicitly
+                            ^
+add_questions.rb:35:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+config.ru:1:1: C: Layout/EndOfLine: Carriage return character detected.
+require './server' ...
+^^^^^^^^^^^^^^^^^^
+config.ru:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require './server'
+^
+config/environment.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+db_options = YAML.load(File.read('./config/database.yml'))
+^
+config/environment.rb:1:19: C: [Correctable] Security/YAMLLoad: Prefer using YAML.safe_load over YAML.load.
+db_options = YAML.load(File.read('./config/database.yml'))
+                  ^^^^
+db/migrate/20230512135223_create_cards.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class CreateCards.
+class CreateCards < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^
+db/migrate/20230512135223_create_cards.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class CreateCards < ActiveRecord::Migration[7.0]
+^
+db/migrate/20230512135223_create_cards.rb:4:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+        t.integer :card_id
+^^^^^
+db/migrate/20230512135223_create_cards.rb:4:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+        t.integer :card_id
+    ^
+db/migrate/20230512135223_create_cards.rb:5:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+        t.string :description
+^^^^^
+db/migrate/20230512135223_create_cards.rb:5:27: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+        t.string :description
+                          ^
+db/migrate/20230512135223_create_cards.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+        t.string :content_link
+^^^^^
+db/migrate/20230512135223_create_cards.rb:7:8: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    end
+       ^
+db/migrate/20230515164400_questions.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class Questions.
+class Questions < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^
+db/migrate/20230515164400_questions.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Questions < ActiveRecord::Migration[7.0]
+^
+db/migrate/20230515164400_questions.rb:4:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+        t.integer :question
+^^^^^
+db/migrate/20230515164400_questions.rb:4:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+        t.integer :question
+    ^
+db/migrate/20230515164400_questions.rb:5:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+        t.boolean :answer
+^^^^^
+db/migrate/20230515164400_questions.rb:6:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+      t.string :content_link
+      ^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230515164400_questions.rb:7:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+      t.timestamps
+      ^^^^^^^^^^^^
+db/migrate/20230515164400_questions.rb:8:8: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    end
+       ^
+db/migrate/20230515185028_create_person.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class CreatePerson.
+class CreatePerson < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^
+db/migrate/20230515185028_create_person.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class CreatePerson < ActiveRecord::Migration[7.0]
+^
+db/migrate/20230515185028_create_person.rb:5:21: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+      t.string :mail
+                    ^
+db/migrate/20230515185028_create_person.rb:7:8: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    end
+       ^
+db/migrate/20230515185028_create_person.rb:9:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+
+db/migrate/20230518001307_create_assessment.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class CreateAssessment.
+class CreateAssessment < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230518001307_create_assessment.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class CreateAssessment < ActiveRecord::Migration[7.0]
+^
+db/migrate/20230518171317_create_modules.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class CreateModules.
+class CreateModules < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^^
+db/migrate/20230518171317_create_modules.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class CreateModules < ActiveRecord::Migration[7.0]
+^
+db/migrate/20230531142304_change_card.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class ChangeCard.
+class ChangeCard < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^
+db/migrate/20230531142304_change_card.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class ChangeCard < ActiveRecord::Migration[7.0]
+^
+db/migrate/20230531142304_change_card.rb:3:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+db/migrate/20230531142304_change_card.rb:5:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+db/migrate/20230602143715_add_relatives.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class AddRelatives.
+class AddRelatives < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^
+db/migrate/20230602143715_add_relatives.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class AddRelatives < ActiveRecord::Migration[7.0]
+^
+db/migrate/20230602143715_add_relatives.rb:3:48: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    add_column :questions, :module_id, :integer
+                                               ^
+db/migrate/20230913163616_modification_pasword.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class ModificationPasword.
+class ModificationPasword < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230913163616_modification_pasword.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class ModificationPasword < ActiveRecord::Migration[7.0]
+^
+db/migrate/20230913163616_modification_pasword.rb:4:49: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    add_column :users, :password_digest, :string
+                                                ^
+db/migrate/20230919141819_del_assessments.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class DelAssessments.
+class DelAssessments < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230919141819_del_assessments.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class DelAssessments < ActiveRecord::Migration[7.0]
+^
+db/migrate/20230919142338_add_responses.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class AddResponses.
+class AddResponses < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^
+db/migrate/20230919142338_add_responses.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class AddResponses < ActiveRecord::Migration[7.0]
+^
+db/migrate/20230919142338_add_responses.rb:10:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+
+db/migrate/20230921145451_change_cards.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class ChangeCards.
+class ChangeCards < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^
+db/migrate/20230921145451_change_cards.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class ChangeCards < ActiveRecord::Migration[7.0]
+^
+db/migrate/20230921145451_change_cards.rb:3:34: C: [Correctable] Layout/SpaceBeforeComma: Space found before comma.
+    add_column :cards, :module_id , :integer
+                                 ^
+db/migrate/20231010170859_columns_users.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class ColumnsUsers.
+class ColumnsUsers < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^
+db/migrate/20231010170859_columns_users.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class ColumnsUsers < ActiveRecord::Migration[7.0]
+^
+db/schema.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+# This file is auto-generated from the current state of the database. Instead
+^
+db/schema.rb:13:1: C: Metrics/BlockLength: Block has too many lines. [40/25]
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_170859) do ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:13:43: C: [Correctable] Style/NumericLiterals: Use underscores(_) as thousands separator and separate every 3 digits with them.
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_170859) do
+                                          ^^^^^^^^^^^^^^^^^
+db/schema.rb:14:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "cards", force: :cascade do |t|
+               ^^^^^^^
+db/schema.rb:15:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "description"
+             ^^^^^^^^^^^^^
+db/schema.rb:16:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "content_link"
+             ^^^^^^^^^^^^^^
+db/schema.rb:17:15: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.integer "module_id"
+              ^^^^^^^^^^^
+db/schema.rb:20:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "modules", force: :cascade do |t|
+               ^^^^^^^^^
+db/schema.rb:21:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "name"
+             ^^^^^^
+db/schema.rb:22:15: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.integer "points"
+              ^^^^^^^^
+db/schema.rb:23:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:24:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:27:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "person", force: :cascade do |t|
+               ^^^^^^^^
+db/schema.rb:28:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "name"
+             ^^^^^^
+db/schema.rb:29:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "mail"
+             ^^^^^^
+db/schema.rb:30:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "password"
+             ^^^^^^^^^^
+db/schema.rb:33:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "questions", force: :cascade do |t|
+               ^^^^^^^^^^^
+db/schema.rb:34:15: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.boolean "answer"
+              ^^^^^^^^
+db/schema.rb:35:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "question"
+             ^^^^^^^^^^
+db/schema.rb:36:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "content_link"
+             ^^^^^^^^^^^^^^
+db/schema.rb:37:15: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.integer "module_id"
+              ^^^^^^^^^^^
+db/schema.rb:40:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "responses", force: :cascade do |t|
+               ^^^^^^^^^^^
+db/schema.rb:41:15: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.integer "users_id", null: false
+              ^^^^^^^^^^
+db/schema.rb:42:15: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.integer "questions_id", null: false
+              ^^^^^^^^^^^^^^
+db/schema.rb:43:15: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.boolean "correct_answer", default: false
+              ^^^^^^^^^^^^^^^^
+db/schema.rb:44:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:45:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:46:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.index ["questions_id"], name: "index_responses_on_questions_id"
+             ^^^^^^^^^^^^^^
+db/schema.rb:46:37: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.index ["questions_id"], name: "index_responses_on_questions_id"
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:47:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.index ["users_id"], name: "index_responses_on_users_id"
+             ^^^^^^^^^^
+db/schema.rb:47:33: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.index ["users_id"], name: "index_responses_on_users_id"
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:50:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  create_table "users", force: :cascade do |t|
+               ^^^^^^^
+db/schema.rb:51:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "email"
+             ^^^^^^^
+db/schema.rb:52:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "created_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:53:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.datetime "updated_at", null: false
+               ^^^^^^^^^^^^
+db/schema.rb:54:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "password_digest"
+             ^^^^^^^^^^^^^^^^^
+db/schema.rb:55:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    t.string "name"
+             ^^^^^^
+db/schema.rb:58:19: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_foreign_key "responses", "questions", column: "questions_id"
+                  ^^^^^^^^^^^
+db/schema.rb:58:32: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_foreign_key "responses", "questions", column: "questions_id"
+                               ^^^^^^^^^^^
+db/schema.rb:58:53: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_foreign_key "responses", "questions", column: "questions_id"
+                                                    ^^^^^^^^^^^^^^
+db/schema.rb:59:19: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_foreign_key "responses", "users", column: "users_id"
+                  ^^^^^^^^^^^
+db/schema.rb:59:32: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_foreign_key "responses", "users", column: "users_id"
+                               ^^^^^^^
+db/schema.rb:59:49: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  add_foreign_key "responses", "users", column: "users_id"
+                                                ^^^^^^^^^^
+models/card.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Card < ActiveRecord::Base
+^
+models/card.rb:2:1: C: [Correctable] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body beginning.
+models/card.rb:3:4: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+end
+   ^
+models/init.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require 'sinatra/base'
+^
+models/init.rb:4:28: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+require_relative 'question'
+
+models/modules.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class Modules.
+class Modules < ActiveRecord::Base
+^^^^^^^^^^^^^
+models/modules.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Modules < ActiveRecord::Base
+^
+models/modules.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    has_many :questions
+^^^^
+models/question.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class Question.
+class Question < ActiveRecord::Base
+^^^^^^^^^^^^^^
+models/question.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Question < ActiveRecord::Base
+^
+models/question.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    has_one :module
+^^^^
+models/question.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    has_many :responses
+^^^^
+models/question.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    validates :answer, presence: true, allow_blank: true
+^^^^
+models/question.rb:5:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    validates :question, presence: true
+^^^^
+models/question.rb:6:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    validates :content_link, presence: true, format: { with: /\A\/images\// }
+^^^^
+models/question.rb:6:62: C: [Correctable] Style/RegexpLiteral: Use %r around regular expression.
+    validates :content_link, presence: true, format: { with: /\A\/images\// }
+                                                             ^^^^^^^^^^^^^^
+models/question.rb:7:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    validates :module_id, presence: true
+^^^^
+models/question.rb:8:3: W: [Correctable] Layout/EndAlignment: end at 8, 2 is not aligned with class at 1, 0.
+  end
+  ^^^
+models/question.rb:8:6: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+  end
+
+models/response.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class Response.
+class Response < ActiveRecord::Base
+^^^^^^^^^^^^^^
+models/response.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Response < ActiveRecord::Base
+^
+models/response.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    belongs_to :user, foreign_key: 'users_id'
+^^^^
+models/response.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    belongs_to :question
+^^^^
+models/response.rb:3:25: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    belongs_to :question
+                        ^^
+models/response.rb:5:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+models/user.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class User.
+class User < ActiveRecord::Base
+^^^^^^^^^^
+models/user.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class User < ActiveRecord::Base
+^
+models/user.rb:6:24: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+  has_many  :responses,  foreign_key: 'users_id'
+                       ^
+server.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+require 'sinatra/base' ...
+^^^^^^^^^^^^^^^^^^^^^^
+server.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require 'sinatra/base'
+^
+server.rb:7:1: W: [Correctable] Lint/NonDeterministicRequireOrder: Sort files before requiring them.
+Dir["./models/*.rb"].each {|file| require file }
+^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:7:5: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+Dir["./models/*.rb"].each {|file| require file }
+    ^^^^^^^^^^^^^^^
+server.rb:7:27: C: [Correctable] Layout/SpaceInsideBlockBraces: Space between { and | missing.
+Dir["./models/*.rb"].each {|file| require file }
+                          ^^
+server.rb:11:20: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+require 'simplecov'
+                   ^
+server.rb:15:1: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+#App, currently: Is connected to the database.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:16:1: C: Metrics/ClassLength: Class has too many lines. [158/100]
+class App < Sinatra::Application ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:17:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+server.rb:18:1: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+#Config about the database and the sets for the .erb
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:18:1: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+#Config about the database and the sets for the .erb
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:25:25: C: [Correctable] Style/StringConcatenation: Prefer string interpolation to string concatenation.
+    set :public_folder, File.dirname(__FILE__) + '/public'
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:32:1: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+#Config sessions
+^^^^^^^^^^^^^^^^
+server.rb:32:1: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+#Config sessions
+^^^^^^^^^^^^^^^^
+server.rb:36:1: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 2).
+#Config fot the inizialitation of the app
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:36:1: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+#Config fot the inizialitation of the app
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:36:42: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+#Config fot the inizialitation of the app
+                                         ^
+server.rb:37:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+server.rb:38:18: W: [Correctable] Lint/UnusedMethodArgument: Unused method argument - app. If it's necessary, use _ or _app as an argument name to indicate that it won't be used. If it's unnecessary, remove it. You can also write as initialize(*) if you want the method to accept any arguments but don't care about them.
+  def initialize(app = nil)
+                 ^^^
+server.rb:39:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+      super()
+  ^^^^
+server.rb:40:5: W: [Correctable] Layout/DefEndAlignment: end at 40, 4 is not aligned with def at 38, 2.
+    end
+    ^^^
+server.rb:41:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    register Sinatra::ActiveRecordExtension
+^^^^
+server.rb:41:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    register Sinatra::ActiveRecordExtension
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:42:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    set :root,  File.dirname(__FILE__)
+^^^^
+server.rb:42:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    set :root,  File.dirname(__FILE__)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:43:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    set :views, Proc.new { File.join(root, 'views') }
+^^^^
+server.rb:43:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    set :views, Proc.new { File.join(root, 'views') }
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:43:17: C: [Correctable] Style/Proc: Use proc instead of Proc.new.
+    set :views, Proc.new { File.join(root, 'views') }
+                ^^^^^^^^
+server.rb:44:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+server.rb:45:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+server.rb:46:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    configure :production, :development do
+^^^^
+server.rb:46:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    configure :production, :development do ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:48:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+server.rb:49:27: C: [Correctable] Style/GlobalStdStream: Use $stdout instead of STDOUT.
+      logger = Logger.new(STDOUT)
+                          ^^^^^^
+server.rb:53:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+server.rb:54:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+server.rb:55:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    configure :development do
+^^^^
+server.rb:55:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    configure :development do ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:62:1: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 4).
+#Config of all the posts and the gets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:62:1: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+#Config of all the posts and the gets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:63:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    post '/user' do
+^^^^
+server.rb:63:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    post '/user' do ...
+    ^^^^^^^^^^^^^^^
+server.rb:67:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        "El usuario o el correo electrónico ya existe."
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:72:22: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+        if @user.save
+                     ^
+server.rb:80:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+server.rb:81:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+server.rb:82:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    post '/login' do
+^^^^
+server.rb:82:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    post '/login' do ...
+    ^^^^^^^^^^^^^^^^
+server.rb:84:10: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
+      if @user && @user.authenticate(params[:password])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:90:8: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    end
+       ^^^^
+server.rb:92:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    get '/game' do
+^^^^
+server.rb:92:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    get '/game' do ...
+    ^^^^^^^^^^^^^^
+server.rb:100:11: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+          #inicializar los puntos
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:100:34: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+          #inicializar los puntos
+                                 ^
+server.rb:101:56: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+          questions = Question.where(module_id: mod_id)
+                                                       ^^
+server.rb:105:13: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+            #por default las crea en false
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:105:43: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+            #por default las crea en false
+                                          ^
+server.rb:106:13: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+            if r.correct_answer
+            ^^
+server.rb:107:29: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator -.
+              @points[mod_id-1] = @points[mod_id-1] + 10
+                            ^
+server.rb:107:49: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator -.
+              @points[mod_id-1] = @points[mod_id-1] + 10
+                                                ^
+server.rb:107:57: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+              @points[mod_id-1] = @points[mod_id-1] + 10
+                                                        ^
+server.rb:110:12: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+        end
+           ^
+server.rb:118:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    get '/login' do
+^^^^
+server.rb:118:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    get '/login' do ...
+    ^^^^^^^^^^^^^^^
+server.rb:126:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    get '/' do
+^^^^
+server.rb:126:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    get '/' do ...
+    ^^^^^^^^^^
+server.rb:134:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    get ' ' do
+^^^^
+server.rb:134:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    get ' ' do ...
+    ^^^^^^^^^^
+server.rb:143:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    get '/game/module/:n/exam/:id' do
+^^^^
+server.rb:143:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    get '/game/module/:n/exam/:id' do ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:146:46: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+      @correct_answer = @pregunta.answer.to_s
+                                             ^^
+server.rb:151:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    get '/logout' do
+^^^^
+server.rb:151:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    get '/logout' do ...
+    ^^^^^^^^^^^^^^^^
+server.rb:153:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+      redirect '/login'
+                       ^
+server.rb:155:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+server.rb:157:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    post '/exam/check-answer/:n/:id' do
+^^^^
+server.rb:157:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    post '/exam/check-answer/:n/:id' do ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:164:7: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+      #update userscore
+      ^^^^^^^^^^^^^^^^^^
+server.rb:164:24: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+      #update userscore
+                       ^
+server.rb:165:10: C: [Correctable] Style/MultipleComparison: Avoid comparing a variable with multiple items in a conditional, use Array#include? instead.
+      if question_id == 1 || question_id == 6 || question_id == 11
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:170:10: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+      end
+         ^
+server.rb:178:10: C: [Correctable] Style/ParenthesesAroundCondition: Don't use parentheses around the condition of an if.
+      if (next_id > @module * 5)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:179:18: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        redirect "/game"
+                 ^^^^^^^
+server.rb:185:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    get '/learn/:n/:id' do
+^^^^
+server.rb:185:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    get '/learn/:n/:id' do ...
+    ^^^^^^^^^^^^^^^^^^^^^^
+server.rb:191:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    post '/learn/:n/:id' do
+^^^^
+server.rb:191:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    post '/learn/:n/:id' do ...
+    ^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:195:48: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+      if card_id + 1 > cards.length * module_id
+                                               ^
+server.rb:196:18: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+        redirect "/game"
+                 ^^^^^^^
+server.rb:196:25: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+        redirect "/game"
+                        ^
+server.rb:197:11: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+      else
+          ^
+server.rb:199:10: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+      end
+         ^
+server.rb:200:8: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    end
+       ^
+server.rb:202:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    get '/ranking' do
+^^^^
+server.rb:202:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    get '/ranking' do  ...
+    ^^^^^^^^^^^^^^^^^^
+server.rb:202:22: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    get '/ranking' do
+                     ^
+server.rb:204:9: C: [Correctable] Layout/MultilineMethodCallIndentation: Align .joins with User on line 203.
+        .joins(:responses)
+        ^^^^^^
+server.rb:205:9: C: [Correctable] Layout/MultilineMethodCallIndentation: Align .where with User on line 203.
+        .where(responses: { correct_answer: true })
+        ^^^^^^
+server.rb:206:9: C: [Correctable] Layout/MultilineMethodCallIndentation: Align .group with User on line 203.
+        .group('users.id')
+        ^^^^^^
+server.rb:207:9: C: [Correctable] Layout/MultilineMethodCallIndentation: Align .order with User on line 203.
+        .order(Arel.sql('COUNT(responses.id) DESC'))
+        ^^^^^^
+server.rb:208:9: C: [Correctable] Layout/MultilineMethodCallIndentation: Align .select with User on line 203.
+        .select('users.*, COUNT(responses.id) AS correct_responses_count')
+        ^^^^^^^
+server.rb:209:9: C: Layout/IndentationConsistency: Inconsistent indentation detected.
+        erb :ranking
+        ^^^^^^^^^^^^
+server.rb:211:3: W: [Correctable] Layout/EndAlignment: end at 211, 2 is not aligned with class at 16, 0.
+  end
+  ^^^
+server.rb:211:6: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+  end
+
+spec/app_spec.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require 'rack/test'
+^
+spec/configenviorment.rb:1:1: W: Lint/EmptyFile: Empty file detected.
+spec/models/question_spec.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+# spec/models/question_spec.rb
+^
+spec/models/question_spec.rb:3:36: C: [Correctable] Style/RedundantFileExtensionInRequire: Redundant .rb file extension detected.
+require_relative '../../models/init.rb'
+                                   ^^^
+spec/models/question_spec.rb:5:1: C: Metrics/BlockLength: Block has too many lines. [52/25]
+describe 'Question' do ...
+^^^^^^^^^^^^^^^^^^^^^^
+spec/models/question_spec.rb:36:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.
+spec/models/user_spec.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require_relative '../../models/init.rb'
+^
+spec/models/user_spec.rb:1:36: C: [Correctable] Style/RedundantFileExtensionInRequire: Redundant .rb file extension detected.
+require_relative '../../models/init.rb'
+                                   ^^^
+spec/models/user_spec.rb:11:7: W: [Correctable] Lint/UselessAssignment: Useless assignment to variable - user.
+      user = User.create(email: 'test@example.com', password: 'password')
+      ^^^^
+spec/models/user_spec.rb:14:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+spec/models/user_spec.rb:20:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.
+spec/models/user_spec.rb:21:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.
+spec/spec_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require 'sinatra/base'
+^
+spec/spec_helper.rb:11:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../config/environment.rb', __dir__) instead of expand_path('../../config/environment.rb', __FILE__).
+require File.expand_path('../../config/environment.rb', __FILE__)
+             ^^^^^^^^^^^Warning: the running version of Bundler (2.1.4) is older than the version that created the lockfile (2.4.12). We suggest you to upgrade to the version that created the lockfile by running `gem install bundler:2.4.12`.
+
+spec/spec_helper.rb:12:28: C: [Correctable] Style/RedundantFileExtensionInRequire: Redundant .rb file extension detected.
+require_relative '../server.rb'
+                           ^^^
+spec/spec_helper.rb:23:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+
+
+32 files inspected, 284 offenses detected, 253 offenses autocorrectable
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Modules < ActiveRecord::Base
-    has_many :questions
+  has_many :questions
 end

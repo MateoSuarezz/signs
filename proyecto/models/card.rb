@@ -1,3 +1,4 @@
-class Card < ActiveRecord::Base
+# frozen_string_literal: true
 
-end 
+class Card < ActiveRecord::Base
+end

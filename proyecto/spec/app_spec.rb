@@ -49,7 +49,7 @@ RSpec.describe 'Sinatra App' do
   end
 
   context 'when a user is logged in' do
-    before do
+    before(:each) do
       @user = FactoryBot.create(:user)
       post '/login', { email: @user.email, password: @user.password }
     end
@@ -71,6 +71,19 @@ RSpec.describe 'Sinatra App' do
       expect(last_response).to be_redirect
       follow_redirect!
       expect(last_request.url).to include('/game')
+    end
+
+    it 'redirects to /game when accessing /signup' do
+      get '/signup'
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.url).to include('/game')
+    end
+    
+    after(:each) do
+      user = User.find_by(email: @user.email)
+      user.responses.destroy_all
+      user.destroy
     end
   end
 end

@@ -92,12 +92,21 @@ class App < Sinatra::Application
         questions.each do |q|
           r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id) 
           if r.correct_answer
-             p = p + 10 
-            end
+            p = p + 10 
           end
         end
         @points.push(p) 
+      end
     end 
+
+    def reset_responses(module_id)
+      questions = Question.where(module_id: module_id)
+      questions.each do |q|
+        r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
+        r.update(correct_answer: false)
+      end
+    end
+
 
     post '/login' do
       @user = User.find_by(email: params[:email])
@@ -149,6 +158,10 @@ class App < Sinatra::Application
       @module = params[:n].to_i
       @pregunta = Question.find(params[:id].to_i)
       @correct_answer = @pregunta.answer.to_s  
+      
+      if [1,6,11].include? @pregunta.id
+        reset_responses(@module)
+      end 
       erb :exam
     end
 
@@ -165,14 +178,6 @@ class App < Sinatra::Application
       user_answer = params[:answer] == 'true'
       question = Question.find(question_id)
       @preguntas = Question.where(module_id: @module)
-
-      #update userscore 
-      if question_id == 1 || question_id == 6 || question_id == 11
-        @preguntas.each do |q|
-          r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
-          r.update(correct_answer: false)
-        end
-      end 
 
       if question.answer == user_answer
         response = Response.find_by(users_id: session[:user_id], questions_id: question_id)

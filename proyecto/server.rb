@@ -64,15 +64,12 @@ class App < Sinatra::Application
     if existing_user || existing_name
       'El usuario o el correo electrónico ya existe.'
     else
-      @user = User.find_or_create_by(email: params[:email])
-      @user.name = params[:name]
-      @user.password = params[:password]
-      if @user.save
-        session[:user_id] = @user.id
-        redirect '/game'
-      else
-        "Error saving user: #{@user.errors.full_messages.join(', ')}"
-      end
+      @user = User.create(name: params[:name], 
+        email: params[:email], 
+        password: params[:password])
+
+      session[:user_id] = @user.id
+      redirect '/game'
     end
   end
 
@@ -109,7 +106,7 @@ class App < Sinatra::Application
       session[:user_id] = @user.id
       redirect '/game'
     else
-      redirect '/login'
+      'correo o contraseña incorrectos'
     end
   end
 
@@ -149,12 +146,16 @@ class App < Sinatra::Application
   end
 
   get '/game/module/:n/exam/:id' do
-    @module = params[:n].to_i
-    @pregunta = Question.find(params[:id].to_i)
-    @correct_answer = @pregunta.answer.to_s
+    if user_logged_in?
+      @module = params[:n].to_i
+      @pregunta = Question.find(params[:id].to_i)
+      @correct_answer = @pregunta.answer.to_s
 
-    reset_responses(@module) if [1, 6, 11].include? @pregunta.id
-    erb :exam
+      reset_responses(@module) if [1, 6, 11].include? @pregunta.id
+      erb :exam
+    else 
+      redirect '/login'
+    end
   end
 
   get '/logout' do
@@ -184,9 +185,13 @@ class App < Sinatra::Application
   end
 
   get '/learn/:n/:id' do
-    @module = params[:n].to_i
-    @carta = Card.find(params[:id].to_i)
-    erb :learn
+    if user_logged_in?
+      @module = params[:n].to_i
+      @carta = Card.find(params[:id].to_i)
+      erb :learn
+    else 
+      redirect '/login'
+    end 
   end
 
   post '/learn/:n/:id' do

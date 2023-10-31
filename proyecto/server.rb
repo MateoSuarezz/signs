@@ -64,9 +64,9 @@ class App < Sinatra::Application
     if existing_user || existing_name
       'El usuario o el correo electrónico ya existe.'
     else
-      @user = User.create(name: params[:name], 
-        email: params[:email], 
-        password: params[:password])
+      @user = User.create(name: params[:name],
+                          email: params[:email],
+                          password: params[:password])
 
       session[:user_id] = @user.id
       redirect '/game'
@@ -153,7 +153,7 @@ class App < Sinatra::Application
 
       reset_responses(@module) if [1, 6, 11].include? @pregunta.id
       erb :exam
-    else 
+    else
       redirect '/login'
     end
   end
@@ -189,9 +189,9 @@ class App < Sinatra::Application
       @module = params[:n].to_i
       @carta = Card.find(params[:id].to_i)
       erb :learn
-    else 
+    else
       redirect '/login'
-    end 
+    end
   end
 
   post '/learn/:n/:id' do

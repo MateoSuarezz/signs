@@ -51,9 +51,9 @@ RSpec.describe 'User controller' do
         user = User.find_by(email: @user.email)
         user.responses.destroy_all
         user.destroy
-      end 
+      end
     end
-  end 
+  end
   describe 'POST /login' do
     context 'when logging in with an existing user' do
       before(:each) do
@@ -82,5 +82,5 @@ RSpec.describe 'User controller' do
         expect(last_response.body).to include('correo o contraseña incorrectos')
       end
     end
-  end 
+  end
 end

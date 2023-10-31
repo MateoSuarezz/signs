@@ -79,7 +79,7 @@ RSpec.describe 'Sinatra App' do
       follow_redirect!
       expect(last_request.url).to include('/game')
     end
-    
+
     after(:each) do
       user = User.find_by(email: @user.email)
       user.responses.destroy_all

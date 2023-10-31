@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # add_questions.rb
 
 # Require necessary dependencies and establish a database connection
@@ -13,9 +15,9 @@ ActiveRecord::Base.establish_connection(
 # Define a method to add questions to the table
 def add_names
   names_data = [
-    { name: 'ABECEDARIO', points: 0},
+    { name: 'ABECEDARIO', points: 0 },
     { name: 'SALUDOS', points: 0 },
-    { name: 'FAMILIA Y AMIGOS', points: 0 },
+    { name: 'FAMILIA Y AMIGOS', points: 0 }
     # Add more question data as needed
   ]
 
@@ -24,12 +26,9 @@ def add_names
     name.assign_attributes(data) # Solo asigna el atributo "name"
     name.save
   end
-  
 
   puts 'Modules added successfully!'
 end
-
-
 
 # Call the method to add questions
 add_names

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 # spec/models/question_spec.rb
 
-require_relative '../../models/init.rb'
+require_relative '../../models/init'
 
 describe 'Question' do
   context 'validations' do
@@ -32,7 +34,6 @@ describe 'Question' do
       expect(question).to_not be_valid
     end
   end
-
 
   context 'columns' do
     it 'has an "answer" column of type boolean' do

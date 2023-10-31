@@ -18,13 +18,21 @@ def add_questions
     { question: 'Esta seña es la letra I', answer: true, content_link: '/images/letraI.png', module_id: 1 },
     { question: 'La letra "V" solo tiene una variante y es la que se ve en pantalla', answer: false, content_link: '/images/letraU.png', module_id: 1 },
     { question: 'Esta seña corresponde a la letra E', answer: false, content_link: '/images/letraE.png', module_id: 1 },
+    { question: 'Esta seña representa mamá', answer: true, content_link: '/images/mama.png', module_id: 2 },
+    { question: 'Basta de bromas, esto es serio. Asi se dice abuelo/a', answer: true, content_link: '/images/abuelos.png', module_id: 2 },
+    { question: 'Esta seña representa abuelo', answer: true, content_link: '/images/abuelo.png', module_id: 2 },
+    { question: 'Lo que describe esta seña es hermanos', answer: false, content_link: '/images/hijos.png', module_id: 2 },
+    { question: 'Esta seña corresponde a tio', answer: false, content_link: '/images/papa.png', module_id: 2 }
   ]
 
   questions_data.each do |data|
-    question = Question.find_or_initialize_by(question: data[:question])
-    question.assign_attributes(data)
-    question.save
+    data[:answer] = false if data[:answer].nil?  # Set answer to false if not specified
+    q = Question.find_or_initialize_by(question: data[:question], content_link: data[:content_link], module_id: data[:module_id])
+    q.assign_attributes(data)
+    q.answer = data[:answer]  # Set the answer attribute explicitly
+    q.save
   end
+  
 
   puts 'Questions added successfully!'
 end

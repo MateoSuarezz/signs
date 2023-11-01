@@ -5,7 +5,8 @@ require 'factory_bot'
 require "#{File.dirname(__FILE__)}/factories.rb"
 require "#{File.dirname(__FILE__)}/../server.rb"
 
-RSpec.describe 'User controller' do
+RSpec.describe App do
+  # Test for user controller
   include Rack::Test::Methods
 
   def app
@@ -14,71 +15,77 @@ RSpec.describe 'User controller' do
 
   describe 'POST /user' do
     context 'when creating a new user' do
-      before(:each) do
-        @user = FactoryBot.build(:user)
+      before do
+        @user = build(:user)
         post '/user', { email: @user.email, name: @user.name, password: @user.password }
       end
 
-      it 'should create a new user' do
+      after do
+        user = User.find_by(email: @user.email)
+        user.responses.destroy_all
+        user.destroy
+      end
+
+      it 'creates a new user' do
         user_from_db = User.find_by(email: @user.email)
         expect(user_from_db).not_to be_nil
       end
-      it 'should redirect to game page' do
-        expect(last_response).to be_redirect
+
+      it 'redirects to game page' do
         follow_redirect!
         expect(last_request.url).to include('/game')
       end
-      after(:each) do
-        user = User.find_by(email: @user.email)
-        user.responses.destroy_all
-        user.destroy
-      end
     end
+
     context 'when creating a new user with an existing email' do
-      before(:each) do
-        @user = FactoryBot.create(:user)
+      before do
+        @user = create(:user)
         post '/user', { email: @user.email, name: @user.name, password: @user.password }
       end
 
-      it 'should not create a new user' do
-        user_from_db = User.find_by(email: @user.email)
-        expect(user_from_db).not_to be_nil
-      end
-      it 'should show an error message' do
-        expect(last_response.body).to include('El usuario o el correo electrónico ya existe.')
-      end
-      after(:each) do
+      after do
         user = User.find_by(email: @user.email)
         user.responses.destroy_all
         user.destroy
+      end
+
+      it 'does not create a new user' do
+        user_from_db = User.find_by(email: @user.email)
+        expect(user_from_db).not_to be_nil
+      end
+
+      it 'shows an error message' do
+        expect(last_response.body).to include('El usuario o el correo electrónico ya existe.')
       end
     end
   end
+
   describe 'POST /login' do
     context 'when logging in with an existing user' do
-      before(:each) do
-        @user = FactoryBot.create(:user)
+      before do
+        @user = create(:user)
         post '/login', { email: @user.email, password: @user.password }
       end
 
-      it 'should redirect to game page' do
-        expect(last_response).to be_redirect
-        follow_redirect!
-        expect(last_request.url).to include('/game')
-      end
-      after(:each) do
+      after do
         user = User.find_by(email: @user.email)
         user.responses.destroy_all
         user.destroy
       end
+
+      it 'redirects to /game' do
+        follow_redirect!
+        expect(last_request.url).to include('/game')
+      end
     end
+
     context 'when logging in with a non-existing user' do
-      before(:each) do
-        @user = FactoryBot.build(:user)
+      before do
+        @user = build(:user)
         post '/login', { email: @user.email, password: @user.password }
       end
 
-      it 'should show an error message' do
+      it 'shows an error message' do
         expect(last_response.body).to include('correo o contraseña incorrectos')
       end
     end

@@ -7,9 +7,7 @@ require 'sinatra/activerecord'
 require 'active_record'
 require 'yaml'
 Dir['./models/*.rb'].sort.each { |file| require file }
-require_relative 'add_questions'
-require_relative 'add_modules'
-require_relative 'add_cards'
+require_relative 'db/info_loaders/add_game_info'
 require 'simplecov'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 

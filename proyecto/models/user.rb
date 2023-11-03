@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
   has_many  :responses, foreign_key: 'users_id'
+
+  after_create :log_new_user
+
+  private
+
+  def log_new_user
+    puts 'A new user was registered'
+  end
 end

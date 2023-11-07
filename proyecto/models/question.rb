@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# questions model
 class Question < ActiveRecord::Base
   has_one :module
   has_many :responses

@@ -30,7 +30,7 @@ class UserController < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/game'
     else
-      '/login'
+        redirect '/login'
     end
   end
 

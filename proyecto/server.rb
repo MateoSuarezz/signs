@@ -11,91 +11,78 @@ require_relative 'db/info_loaders/add_game_info'
 require 'simplecov'
 require 'sinatra/reloader' if Sinatra::Base.environment == :development
 
-# App, currently: Is connected to the database.
+# Initialize the application
 class App < Sinatra::Application
-  # Config about the database and the sets for the .erb
   configure do
+    # Database configuration
     db_config = YAML.load_file('config/database.yml')
     ActiveRecord::Base.establish_connection(db_config['development'])
 
+    # General configuration
     set :root, File.dirname(__FILE__)
     set :views, File.join(root, 'views')
     set :public_folder, "#{File.dirname(__FILE__)}/public"
 
-    configure :development do
-      register Sinatra::Reloader
-      enable :logging, :dump_errors, :raise_errors
-    end
-  end
-  # Config sessions
-  configure do
     enable :sessions
-  end
-  # Config fot the inizialitation of the app
-
-  def initialize(_app = nil)
-    super()
-  end
-  register Sinatra::ActiveRecordExtension
-  set :root,  File.dirname(__FILE__)
-  set :views, proc { File.join(root, 'views') }
-
-  configure :production, :development do
     enable :logging
 
-    logger = Logger.new($stdout)
-    logger.level = Logger::DEBUG if development?
-    set :logger, logger
-  end
-
-  configure :development do
-    register Sinatra::Reloader
-    after_reload do
-      puts 'Reloaded...'
+    configure :development do
+      register Sinatra::Reloader
+      enable :dump_errors, :raise_errors
+      set :logger, Logger.new($stdout, level: Logger::DEBUG)
     end
   end
 
-  # Config of all the posts and the gets
-  post '/user' do
-    existing_user = User.find_by(email: params[:email])
-    existing_name = User.find_by(name: params[:name])
-    if existing_user || existing_name
-      'El usuario o el correo electrónico ya existe.'
-    else
-      @user = User.create(name: params[:name],
-                          email: params[:email],
-                          password: params[:password])
+  register Sinatra::ActiveRecordExtension
 
-      session[:user_id] = @user.id
-      redirect '/game'
+  before do
+    pass if request.path_info == '/login' || request.path_info == '/signup'
+    redirect '/signup' unless user_logged_in?
+  end
+
+  # Helpers
+  helpers do
+    def user_logged_in?
+      session[:user_id]
     end
-  end
 
-  def user_logged_in?
-    session[:user_id] != nil
-  end
+    def load_points
+      @user = User.find_by(id: session[:user_id])
+      @modules = Module.all
+      @points = []
 
-  def load_points
-    @user = User.find_by(id: session[:user_id])
-    @modules = Modules.all
-    @points = []
-    @modules.each do |mod|
-      questions = Question.where(module_id: mod.id)
-      p = 0
+      @modules.each do |mod|
+        questions = Question.where(module_id: mod.id)
+        p = 0
+        questions.each do |q|
+          r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
+          p += 10 if r.correct_answer
+        end
+        @points.push(p)
+      end
+    end
+
+    def reset_responses(module_id)
+      questions = Question.where(module_id: module_id)
       questions.each do |q|
         r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
-        p += 10 if r.correct_answer
+        r.update(correct_answer: false)
       end
-      @points.push(p)
     end
   end
 
-  def reset_responses(module_id)
-    questions = Question.where(module_id: module_id)
-    questions.each do |q|
-      r = Response.find_or_create_by(users_id: session[:user_id], questions_id: q.id)
-      r.update(correct_answer: false)
-    end
+  # Routes
+  post '/user' do
+      existing_user = User.find_by(email: params[:email])
+      existing_name = User.find_by(name: params[:name])
+    
+      if existing_user || existing_name
+        redirect '/'
+      else
+        @user = User.create(name: params[:name], email: params[:email], password: params[:password])
+        session[:user_id] = @user.id
+        redirect '/game'
+      end
   end
 
   post '/login' do
@@ -104,17 +91,15 @@ class App < Sinatra::Application
       session[:user_id] = @user.id
       redirect '/game'
     else
-      'correo o contraseña incorrectos'
+      redirect '/login'
     end
   end
 
   get '/game' do
-    # Check if the user is authenticated
     if user_logged_in?
       load_points
       erb :game
     else
-      # User is not authenticated, redirect to login or show an error
       redirect '/login'
     end
   end
@@ -128,15 +113,11 @@ class App < Sinatra::Application
   end
 
   get '/' do
-    if session[:user_id]
-      redirect '/game'
-    else
-      redirect '/signup'
-    end
+    redirect user_logged_in? ? '/game' : '/signup'
   end
 
   get '/signup' do
-    if session[:user_id]
+    if user_logged_in?
       redirect '/game'
     else
       erb :index
@@ -161,7 +142,6 @@ class App < Sinatra::Application
     redirect '/login'
   end
 
-  # Ruta para procesar las respuestas
   post '/exam/check-answer/:n/:id' do
     @module = params[:n].to_i
     question_id = params[:id].to_i
@@ -204,6 +184,7 @@ class App < Sinatra::Application
   end
 
   get '/ranking' do
+    # Display user ranking
     @users = User
              .joins(:responses)
              .where(responses: { correct_answer: true })

@@ -12,7 +12,7 @@ ENV['APP_ENV'] ||= 'test'
 ActiveRecord::Base.logger.level = 1
 
 require File.expand_path('../config/environment.rb', __dir__)
-require_relative '../server'
+require_relative '../app'
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.expect_with :rspec do |expectations|

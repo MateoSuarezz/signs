@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
 require 'bundler/setup'
 require 'logger'
@@ -20,7 +22,7 @@ class MyApp < Sinatra::Base
     set :public_folder, "#{File.dirname(__FILE__)}/public"
     enable :sessions
   end
-    use UserController
-    use GameController
-    run! if app_file == $0
+  use UserController
+  use GameController
+  run! if app_file == $PROGRAM_NAME
 end

@@ -3,13 +3,12 @@
 require 'rack/test'
 require 'factory_bot'
 require "#{File.dirname(__FILE__)}/factories.rb"
-require "#{File.dirname(__FILE__)}/../server.rb"
 
-RSpec.describe App do
+RSpec.describe MyApp do
   include Rack::Test::Methods
 
   def app
-    App
+    MyApp
   end
 
   describe 'GET /game/module/:n/exam/:id' do

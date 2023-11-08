@@ -6,6 +6,6 @@ require 'sinatra/activerecord' # Only if using ActiveRecord
 
 namespace :db do
   task :load_config do
-    require './server'
+    require './app'
   end
 end

@@ -5,37 +5,19 @@
 require_relative '../../models/init'
 
 describe 'Question' do
-  context 'validations' do
+  context 'when checking validations' do
+    valid_question = Question.new(answer: true, question: 'Sample question',
+                                  content_link: '/images/letraE.png', module_id: 1)
+    invalid_question = Question.new
+
     it 'is valid with valid attributes' do
-      question = Question.new(
-        answer: true,
-        question: 'Sample question',
-        content_link: '/images/letraE.png',
-        module_id: 1
-      )
-      expect(question).to be_valid
+      expect(valid_question).to be_valid
     end
 
-    it 'is invalid without a question content' do
-      question = Question.new(
-        answer: true,
-        content_link: '/images/letraE.png',
-        module_id: 1
-      )
-      expect(question).to_not be_valid
+    it 'is invalid without content' do
+      expect(invalid_question).not_to be_valid
     end
 
-    it 'is invalid without a module_id' do
-      question = Question.new(
-        answer: true,
-        question: 'Sample question',
-        content_link: '/images/letraE.png'
-      )
-      expect(question).to_not be_valid
-    end
-  end
-
-  context 'columns' do
     it 'has an "answer" column of type boolean' do
       expect(Question.columns_hash['answer'].type).to eq :boolean
     end
@@ -51,16 +33,9 @@ describe 'Question' do
     it 'has a "module_id" column of type integer' do
       expect(Question.columns_hash['module_id'].type).to eq :integer
     end
-  end
 
-  context 'data integrity' do
     it 'ensures that content_link starts with "/images/"' do
-      question = Question.new(
-        answer: true,
-        question: 'Sample question',
-        content_link: 'example.com',
-        module_id: 3
-      )
+      question = Question.new(answer: true, question: 'Sample question', content_link: 'example.com', module_id: 3)
       expect(question.valid?).to be false
     end
   end

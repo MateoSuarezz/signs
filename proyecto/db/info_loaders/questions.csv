@@ -1,0 +1,11 @@
+answer,question,content_link,module_id
+1,¿Esta seña corresponde a la letra A?,/images/letraA.png,1
+0,"La letra ""CH"" fue sacada del alfabeto convencional, por ende, no tiene seña correspondiente",/images/letraCH.png,1
+1,Esta seña es la letra I,/images/letraI.png,1
+0,"La letra ""V"" solo tiene una variante y es la que se ve en pantalla",/images/letraU.png,1
+1,Esta seña corresponde a la letra E,/images/letraE.png,1
+1,Esta seña representa mamá,/images/mama.png,2
+1,"Basta de bromas, esto es serio. Asi se dice abuelo/a",/images/abuelos.png,2
+1,Esta seña representa abuelo,/images/abuelo.png,2
+1,En esta imagen se dice mama,/images/mama.png,2
+0,Lo que describe esta seña es hermanos,/images/hijos.png,2

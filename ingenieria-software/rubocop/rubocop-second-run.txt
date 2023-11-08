@@ -1,0 +1,196 @@
+ docker compose run app bundle exec rubocop
+Inspecting 35 files
+CCCCCC.CCCCCCCCCCCCCCCCCCCCCWCCCCCC
+
+Offenses:
+
+Gemfile:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Rakefile.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Rakefile.rb:1:1: C: Naming/FileName: The name of this source file (Rakefile.rb) should use snake_case.
+# frozen_string_literal: true
+^
+add_cards.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+add_cards.rb:16:1: C: Metrics/MethodLength: Method has too many lines. [18/10]
+def add_cards ...
+^^^^^^^^^^^^^
+add_modules.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+add_modules.rb:16:1: C: Metrics/MethodLength: Method has too many lines. [11/10]
+def add_names ...
+^^^^^^^^^^^^^
+add_questions.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+add_questions.rb:16:1: C: Metrics/MethodLength: Method has too many lines. [25/10]
+def add_questions ...
+^^^^^^^^^^^^^^^^^
+config.ru:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230512135223_create_cards.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230512135223_create_cards.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class CreateCards.
+class CreateCards < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^
+db/migrate/20230515164400_questions.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230515164400_questions.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class Questions.
+class Questions < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^
+db/migrate/20230515185028_create_person.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230515185028_create_person.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class CreatePerson.
+class CreatePerson < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^
+db/migrate/20230518001307_create_assessment.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230518001307_create_assessment.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class CreateAssessment.
+class CreateAssessment < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230518171317_create_modules.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230518171317_create_modules.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class CreateModules.
+class CreateModules < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^^
+db/migrate/20230531142304_change_card.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230531142304_change_card.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class ChangeCard.
+class ChangeCard < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^
+db/migrate/20230602143715_add_relatives.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230602143715_add_relatives.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class AddRelatives.
+class AddRelatives < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^
+db/migrate/20230913163616_modification_pasword.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230913163616_modification_pasword.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class ModificationPasword.
+class ModificationPasword < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230919141819_del_assessments.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230919141819_del_assessments.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class DelAssessments.
+class DelAssessments < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230919142338_add_responses.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230919142338_add_responses.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class AddResponses.
+class AddResponses < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^
+db/migrate/20230921145451_change_cards.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20230921145451_change_cards.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class ChangeCards.
+class ChangeCards < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^
+db/migrate/20231010170859_columns_users.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrate/20231010170859_columns_users.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class ColumnsUsers.
+class ColumnsUsers < ActiveRecord::Migration[7.0]
+^^^^^^^^^^^^^^^^^^
+db/schema.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/schema.rb:15:1: C: Metrics/BlockLength: Block has too many lines. [40/25]
+ActiveRecord::Schema[7.0].define(version: 20_231_010_170_859) do ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/card.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class Card.
+class Card < ActiveRecord::Base
+^^^^^^^^^^
+models/init.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/modules.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/modules.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class Modules.
+class Modules < ActiveRecord::Base
+^^^^^^^^^^^^^
+models/question.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/question.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class Question.
+class Question < ActiveRecord::Base
+^^^^^^^^^^^^^^
+models/response.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/response.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class Response.
+class Response < ActiveRecord::Base
+^^^^^^^^^^^^^^
+models/user.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/user.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class User.
+class User < ActiveRecord::Base
+^^^^^^^^^^
+server.rb:17:1: C: Metrics/ClassLength: Class has too many lines. [168/100]
+class App < Sinatra::Application ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+server.rb:80:3: C: Metrics/MethodLength: Method has too many lines. [12/10]
+  def load_points ...
+  ^^^^^^^^^^^^^^^
+spec/app_spec.rb:8:1: C: Metrics/BlockLength: Block has too many lines. [68/25]
+RSpec.describe 'Sinatra App' do ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/app_spec.rb:15:3: C: Metrics/BlockLength: Block has too many lines. [29/25]
+Warning: the running version of Bundler (2.1.4) is older than the version that created the lockfile (2.4.12). We suggest you to upgrade to the version that created the lockfile by running `gem install bundler:2.4.12`.
+  context 'when no user is logged in' do ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/app_spec.rb:51:3: C: Metrics/BlockLength: Block has too many lines. [31/25]
+  context 'when a user is logged in' do ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/configenviorment.rb:1:1: W: Lint/EmptyFile: Empty file detected.
+spec/factories.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/game_controller_spec.rb:8:1: C: Metrics/BlockLength: Block has too many lines. [119/25]
+RSpec.describe 'Game controller' do ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/game_controller_spec.rb:15:3: C: Metrics/BlockLength: Block has too many lines. [28/25]
+  describe 'GET /game/module/:n/exam/:id' do ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/game_controller_spec.rb:45:3: C: Metrics/BlockLength: Block has too many lines. [28/25]
+  describe 'GET /learn/:n/:id' do ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/game_controller_spec.rb:76:3: C: Metrics/BlockLength: Block has too many lines. [31/25]
+  describe 'POST /exam/check-answer/:n/:id' do ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/question_spec.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/models/question_spec.rb:7:1: C: Metrics/BlockLength: Block has too many lines. [52/25]
+describe 'Question' do ...
+^^^^^^^^^^^^^^^^^^^^^^
+spec/models/user_spec.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/spec_helper.rb:1:1: C: Layout/EndOfLine: Carriage return character detected.
+# frozen_string_literal: true ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/user_controller_spec.rb:8:1: C: Metrics/BlockLength: Block has too many lines. [71/25]
+RSpec.describe 'User controller' do ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+spec/user_controller_spec.rb:15:3: C: Metrics/BlockLength: Block has too many lines. [38/25]
+  describe 'POST /user' do ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^
+
+35 files inspected, 63 offenses detected

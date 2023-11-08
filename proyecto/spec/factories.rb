@@ -13,18 +13,10 @@ FactoryBot.define do
 end
 
 FactoryBot.define do
-  factory :question do
+  factory :invalid_question do
+    question { 'Sample Question' }
     answer { true }
-    question { 'Sample question' }
-    content_link { '/images/letraE.png' }
-    module_id { 1 }
-  end
-end
-
-FactoryBot.define do
-  factory :response do
-    user
-    question
-    answer { true }
+    module_id { 3 }
+    content_link { 'example.com' }
   end
 end

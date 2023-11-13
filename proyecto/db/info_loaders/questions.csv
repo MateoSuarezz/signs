@@ -5,7 +5,12 @@ answer,question,content_link,module_id
 0,"La letra ""V"" solo tiene una variante y es la que se ve en pantalla",/images/letraU.png,1
 1,Esta seña corresponde a la letra E,/images/letraE.png,1
 1,Esta seña representa mamá,/images/mama.png,2
+0,Esta seña representa abuelo,/images/tios.png,2
 1,"Basta de bromas, esto es serio. Asi se dice abuelo/a",/images/abuelos.png,2
-1,Esta seña representa abuelo,/images/abuelo.png,2
-1,En esta imagen se dice mama,/images/mama.png,2
+0,Esta seña representa tio(izquierda) y tia(derecha),/images/tios.png,2
 0,Lo que describe esta seña es hermanos,/images/hijos.png,2
+1,De esta forma podes decir hola,/images/hola2.png,3
+1,Y asi podes decir chau,/images/chau2.png,3
+1,Para pedir disculpas se hace esta seña,/images/disculpas2.png,3
+1,Cuando pedis porfavor lo haces con esta seña,/images/porfavor2.png,3
+1,Y para pedir silencio lo hacemos asi,/images/silencio2.png,3
